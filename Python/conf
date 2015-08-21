@@ -1,0 +1,146 @@
+begin
+  remote = *
+  button = KEY_CHANNELDOWN
+  prog = pylirc
+  config = KEY_CHANNELDOWN
+end
+
+begin
+  remote = *
+  button = KEY_CHANNEL
+  prog = pylirc
+  config = KEY_CHANNEL
+end
+
+begin
+  remote = *
+  button = KEY_CHANNELUP
+  prog = pylirc
+  config = KEY_CHANNELUP
+end
+
+begin
+  remote = *
+  button = KEY_PREVIOUS
+  prog = pylirc
+  config = KEY_PREVIOUS
+end
+
+begin
+  remote = *
+  button = KEY_NEXT
+  prog = pylirc
+  config = KEY_NEXT
+end
+
+begin
+  remote = *
+  button = KEY_PLAYPAUSE
+  prog = pylirc
+  config = KEY_PLAYPAUSE
+end
+
+begin
+  remote = *
+  button = KEY_VOLUMEDOWN
+  prog = pylirc
+  config = KEY_VOLUMEDOWN
+end
+
+begin
+  remote = *
+  button = KEY_VOLUMEUP
+  prog = pylirc
+  config = KEY_VOLUMEUP
+end
+
+begin
+  remote = *
+  button = KEY_EQUAL
+  prog = pylirc
+  config = KEY_EQUAL
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_0
+  prog = pylirc
+  config = KEY_NUMERIC_0
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_1
+  prog = pylirc
+  config = KEY_NUMERIC_1
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_2
+  prog = pylirc
+  config = KEY_NUMERIC_2
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_3
+  prog = pylirc
+  config = KEY_NUMERIC_3
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_4
+  prog = pylirc
+  config = KEY_NUMERIC_4
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_5
+  prog = pylirc
+  config = KEY_NUMERIC_5
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_6
+  prog = pylirc
+  config = KEY_NUMERIC_6
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_7
+  prog = pylirc
+  config = KEY_NUMERIC_7
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_8
+  prog = pylirc
+  config = KEY_NUMERIC_8
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_9
+  prog = pylirc
+  config = KEY_NUMERIC_9
+end
+
+begin
+  remote = *
+  button = BTN_0
+  prog = pylirc
+  config = BTN_0
+ end
+
+begin
+  remote = *
+  button = BTN_1
+  prog = pylirc
+  config = BTN_1:
+end

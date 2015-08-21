@@ -1,0 +1,2 @@
+Run to compile the code.
+	gcc dule_color_led.c –lwiringPi -lpthread
