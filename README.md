@@ -27,6 +27,7 @@ SunFounder, Inc., hereby disclaims all copyright interest in the program
 'Sunfounder Sensor Kit C/Python code ' (which makes passes at compilers) written by Cavon Lee.
 
 Mike Huang, 21 August 2015
+
 Mike Huang, Chief Executive Officer
 
 Email: support@sunfounder.com
