@@ -1,34 +1,45 @@
 #!/usr/bin/env python
-
+import PCF8591 as ADC
 import RPi.GPIO as GPIO
-import ADC0832
 import time
+import math
 
-RAIN = 15
+DO = 17
+GPIO.setmode(GPIO.BCM)
 
 def setup():
-	GPIO.setmode(GPIO.BOARD)
-	GPIO.setup(RAIN, GPIO.IN)
-	ADC0832.setup()
+	ADC.setup(0x48)
+	GPIO.setup(DO, GPIO.IN)
+
+def Print(x):
+	if x == 1:
+		print ''
+		print '   *********'
+		print '   * 1 *'
+		print '   *********'
+		print ''
+	if x == 0:
+		print ''
+		print '   *********'
+		print '   * 0 *'
+		print '   *********'
+		print ''
 
 def loop():
+	status = 1
 	while True:
-		rainVal = ADC0832.getResult(0)
-		print GPIO.input(RAIN)
-		if GPIO.input(RAIN) == 0:
-			print '***************'
-			print '* !!RAINING!! *'
-			print '***************'
-			print ''
-		print rainVal
-		time.sleep(0.5)
+		print ADC.read(0)
+		
+		tmp = GPIO.input(DO);
+		if tmp != status:
+			Print(tmp)
+			status = tmp
+		
+		time.sleep(0.2)
 
-def destroy():
-	GPIO.cleanup()
-
-if __name__ == "__main__":
-	setup()
+if __name__ == '__main__':
 	try:
+		setup()
 		loop()
-	except KeyboardInterrupt:
-		destroy()
+	except KeyboardInterrupt: 
+		pass	

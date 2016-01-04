@@ -1,76 +1,28 @@
-#include <wiringPi.h>
 #include <stdio.h>
+#include <wiringPi.h>
+#include <pcf8591.h>
+#include <math.h>
 
-typedef unsigned char uchar;
-typedef unsigned int uint;
+#define		PCF     120
+#define		DOpin	0
 
-#define     ADC_CS    0
-#define     ADC_CLK   1
-#define     ADC_DIO   2
-
-uchar get_ADC_Result(void)
+int main()
 {
-	uchar i;
-	uchar dat1=0, dat2=0;
-
-	digitalWrite(ADC_CS, 0);
-	digitalWrite(ADC_CLK,0);
-	digitalWrite(ADC_DIO,1);	delayMicroseconds(2);
-	digitalWrite(ADC_CLK,1);	delayMicroseconds(2);
-
-	digitalWrite(ADC_CLK,0);	
-	digitalWrite(ADC_DIO,1);    delayMicroseconds(2);
-	digitalWrite(ADC_CLK,1);	delayMicroseconds(2);
-
-	digitalWrite(ADC_CLK,0);	
-	digitalWrite(ADC_DIO,0);	delayMicroseconds(2);
-	digitalWrite(ADC_CLK,1);	
-	digitalWrite(ADC_DIO,1);    delayMicroseconds(2);
-	digitalWrite(ADC_CLK,0);	
-	digitalWrite(ADC_DIO,1);    delayMicroseconds(2);
+	int analogVal;
 	
-	for(i=0;i<8;i++)
-	{
-		digitalWrite(ADC_CLK,1);	delayMicroseconds(2);
-		digitalWrite(ADC_CLK,0);    delayMicroseconds(2);
-
-		pinMode(ADC_DIO, INPUT);
-		dat1=dat1<<1 | digitalRead(ADC_DIO);
-	}
-	
-	for(i=0;i<8;i++)
-	{
-		dat2 = dat2 | ((uchar)(digitalRead(ADC_DIO))<<i);
-		digitalWrite(ADC_CLK,1); 	delayMicroseconds(2);
-		digitalWrite(ADC_CLK,0);    delayMicroseconds(2);
-	}
-
-	digitalWrite(ADC_CS,1);
-	
-	return(dat1==dat2) ? dat1 : 0;
-}
-
-int main(void)
-{
-	uchar analogVal;
-	uchar illum;
-
-	if(wiringPiSetup() == -1){ //when initialize wiring failed,print messageto screen
+	if(wiringPiSetup() == -1){
 		printf("setup wiringPi failed !");
-		return 1; 
+		return 1;
 	}
+	// Setup pcf8591 on base pin 120, and address 0x48
+	pcf8591Setup(PCF, 0x48);
 
-	pinMode(ADC_CS,  OUTPUT);
-	pinMode(ADC_CLK, OUTPUT);
+	while(1) // loop forever
+	{
+		analogVal = analogRead(PCF + 0);
+		printf("Value: %d\n", analogVal);
 
-	while(1){
-		pinMode(ADC_DIO, OUTPUT);
-
-		analogVal = get_ADC_Result();
-		illum = 210 - analogVal;
-		printf("Current illumination : %d\n", illum);
-		delay(500);
+		delay (200);
 	}
-
 	return 0;
 }

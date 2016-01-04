@@ -31,7 +31,6 @@ void Print(int x)
 int main()
 {
 	int analogVal;
-	double Vr, Rt, temp;
 	int tmp, status;
 	
 	if(wiringPiSetup() == -1){

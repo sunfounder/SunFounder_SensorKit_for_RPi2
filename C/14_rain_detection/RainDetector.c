@@ -1,90 +1,62 @@
-#include <wiringPi.h>
 #include <stdio.h>
+#include <wiringPi.h>
+#include <pcf8591.h>
+#include <math.h>
 
-typedef unsigned char uchar;
-typedef unsigned int  uint;
+#define		PCF     120
+#define		DOpin	0
 
-#define     ADC_CS    0
-#define     ADC_CLK   1
-#define     ADC_DIO   2
-#define		RAIN	  3
-
-uchar get_ADC_Result(void)
+void Print(int x)
 {
-	//10:CH0
-	//11:CH1
-	uchar i;
-	uchar dat1=0, dat2=0;
-
-	digitalWrite(ADC_CS, 0);
-
-	digitalWrite(ADC_CLK,0);
-	digitalWrite(ADC_DIO,1);	delayMicroseconds(2);
-	digitalWrite(ADC_CLK,1);	delayMicroseconds(2);
-	digitalWrite(ADC_CLK,0);
-
-	digitalWrite(ADC_DIO,1);    delayMicroseconds(2); //CH0 10
-	digitalWrite(ADC_CLK,1);	delayMicroseconds(2);
-	digitalWrite(ADC_CLK,0);
-
-	digitalWrite(ADC_DIO,0);	delayMicroseconds(2); //CH0 0
-	
-	digitalWrite(ADC_CLK,1);	
-	digitalWrite(ADC_DIO,1);    delayMicroseconds(2);
-	digitalWrite(ADC_CLK,0);	
-	digitalWrite(ADC_DIO,1);    delayMicroseconds(2);
-	
-	for(i=0;i<8;i++)
+	switch(x)
 	{
-		digitalWrite(ADC_CLK,1);	delayMicroseconds(2);
-		digitalWrite(ADC_CLK,0);    delayMicroseconds(2);
-
-		pinMode(ADC_DIO, INPUT);
-		dat1=dat1<<1 | digitalRead(ADC_DIO);
+		case 1:
+			printf("\n*********\n"  );
+			printf(  "* 1 *\n"  );
+			printf(  "*********\n\n");
+		break;
+		case 0:
+			printf("\n*********\n"  );
+			printf(  "* 0 *\n"  );
+			printf(  "*********\n\n");
+		break;
+		default:
+			printf("\n**********************\n"  );
+			printf(  "* Print value error. *\n"  );
+			printf(  "**********************\n\n");
+		break;
 	}
-	
-	for(i=0;i<8;i++)
-	{
-		dat2 = dat2 | ((uchar)(digitalRead(ADC_DIO))<<i);
-		digitalWrite(ADC_CLK,1); 	delayMicroseconds(2);
-		digitalWrite(ADC_CLK,0);    delayMicroseconds(2);
-	}
-
-	digitalWrite(ADC_CS,1);
-
-	pinMode(ADC_DIO, OUTPUT);
-
-	return(dat1==dat2) ? dat1 : 0;
 }
 
-int main(void)
+int main()
 {
-	uchar analogVal;
-	uchar digitalVal;
-
+	int analogVal;
+	int tmp, status;
+	
 	if(wiringPiSetup() == -1){
 		printf("setup wiringPi failed !");
-		return 1; 
+		return 1;
 	}
+	// Setup pcf8591 on base pin 120, and address 0x48
+	pcf8591Setup(PCF, 0x48);
 
-	pinMode(ADC_CS,  OUTPUT);
-	pinMode(ADC_CLK, OUTPUT);
-	pinMode(RAIN,    INPUT);
+	pinMode(DOpin, INPUT);
 
-	while(1){
-		pinMode(ADC_DIO, OUTPUT);
-		analogVal = get_ADC_Result();
-		digitalVal = digitalRead(RAIN);
+	status = 0;
+	while(1) // loop forever
+	{
+		analogVal = analogRead(PCF + 0);
+		printf("%d\n", analogVal);
 
-		printf("%d\n",analogVal);
+		tmp = digitalRead(DOpin);
 
-		if(digitalVal == 0){
-			printf("    *****************\n");
-			printf("    * !! RAINING !! *\n");
-			printf("    *****************\n\n");
+		if (tmp != status)
+		{
+			Print(tmp);
+			status = tmp;
 		}
-		delay(500);
-	}
 
+		delay (200);
+	}
 	return 0;
 }
