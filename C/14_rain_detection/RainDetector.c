@@ -11,14 +11,14 @@ void Print(int x)
 	switch(x)
 	{
 		case 1:
-			printf("\n*********\n"  );
-			printf(  "* 1 *\n"  );
-			printf(  "*********\n\n");
+			printf("\n***************\n"  );
+			printf(  "* Not Raining *\n"  );
+			printf(  "***************\n\n");
 		break;
 		case 0:
-			printf("\n*********\n"  );
-			printf(  "* 0 *\n"  );
-			printf(  "*********\n\n");
+			printf("\n*************\n"  );
+			printf(  "* Raining!! *\n"  );
+			printf(  "*************\n\n");
 		break;
 		default:
 			printf("\n**********************\n"  );
@@ -32,7 +32,7 @@ int main()
 {
 	int analogVal;
 	int tmp, status;
-	
+
 	if(wiringPiSetup() == -1){
 		printf("setup wiringPi failed !");
 		return 1;

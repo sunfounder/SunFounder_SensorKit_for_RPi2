@@ -14,15 +14,15 @@ def setup():
 def Print(x):
 	if x == 1:
 		print ''
-		print '   *********'
-		print '   * 1 *'
-		print '   *********'
+		print '   ***************'
+		print '   * Not raining *'
+		print '   ***************'
 		print ''
 	if x == 0:
 		print ''
-		print '   *********'
-		print '   * 0 *'
-		print '   *********'
+		print '   *************'
+		print '   * Raining!! *'
+		print '   *************'
 		print ''
 
 def loop():

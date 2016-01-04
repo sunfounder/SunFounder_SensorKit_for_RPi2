@@ -13,9 +13,9 @@ int main (void)
 	while(1) // loop forever
 	{
 		value = analogRead  (PCF + 0) ;
-		printf("%d\n", value);
+		printf("Value: %d\n", value);
 		analogWrite (PCF + 0, value) ;
-		delay (10) ;
+		delay (200) ;
 	}
 	return 0 ;
 }
