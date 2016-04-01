@@ -40,7 +40,7 @@ def Print(x):
 def loop():
 	state = 0
 	while True:
-		if GPIO.input(VibratePin)
+		if GPIO.input(VibratePin):
 			state = state + 1
 			if state > 1:
 				state = 0
