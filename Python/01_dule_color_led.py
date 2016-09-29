@@ -6,9 +6,8 @@ colors = [0xFF00, 0x00FF, 0x0FF0, 0xF00F]
 pins = {'pin_R':11, 'pin_G':12}  # pins is a dict
 
 GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
-for i in pins:
-	GPIO.setup(pins[i], GPIO.OUT)   # Set pins' mode is output
-	GPIO.output(pins[i], GPIO.HIGH) # Set pins to high(+3.3V) to off led
+GPIO.setup(pins, GPIO.OUT)   # Set pins' mode is output
+GPIO.output(pins, GPIO.LOW)  # Set pins to LOW(0V) to off led
 
 p_R = GPIO.PWM(pins['pin_R'], 2000)  # set Frequece to 2KHz
 p_G = GPIO.PWM(pins['pin_G'], 2000)
@@ -38,8 +37,7 @@ def loop():
 def destroy():
 	p_R.stop()
 	p_G.stop()
-	for i in pins:
-		GPIO.output(pins[i], GPIO.HIGH)    # Turn off all leds
+	GPIO.output(pins, GPIO.LOW)    # Turn off all leds
 	GPIO.cleanup()
 
 if __name__ == "__main__":
