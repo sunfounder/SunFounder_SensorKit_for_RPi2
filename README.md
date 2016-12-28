@@ -1,9 +1,9 @@
 ## SunFounder Sensor Kit V2.0 for RPi 2
-SunFounder Sensor Kit V2.0 for RaspberryPi, compatible for Rev.1 Module B/B+, Rev 3 Module B
+SunFounder Sensor Kit V2.0 for **RaspberryPi 2B**, compatible for **Rev.1 Module B/B+**, **Rev 3 Module B**
 
 Quick Links:
 
- * [About {thing name}](#about_this_kit)
+ * [About SunFounder Sensor Kit V2.0](#about_this_kit)
  * [Update](#update)
  * [About SunFounder](#about_sunfounder)
  * [License](#license)
