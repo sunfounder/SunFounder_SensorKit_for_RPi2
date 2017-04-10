@@ -19,7 +19,7 @@ import ds1302
 import rpi_time2
 import time
 
-rtc = rpi_time.DS1302()
+rtc = rpi_time2.DS1302()
 
 def setup():
 	print ''
