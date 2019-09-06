@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 #define TouchPin	0
-#define Gpin		1
-#define Rpin		2
+#define Gpin		2
+#define Rpin		1
 
 int tmp = 0;
 

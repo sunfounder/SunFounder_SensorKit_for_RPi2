@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 import time
 
@@ -11,10 +11,10 @@ def setup():
 
 def loop():
 	while True:
-		print '...relayd on'
+		#'...relayd on'
 		GPIO.output(RelayPin, GPIO.LOW)
 		time.sleep(0.5)
-		print 'relay off...'
+		#'relay off...'
 		GPIO.output(RelayPin, GPIO.HIGH)
 		time.sleep(0.5)
 

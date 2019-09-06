@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 BtnPin = 11
@@ -20,15 +20,8 @@ def Led(x):
 		GPIO.output(Rpin, 0)
 		GPIO.output(Gpin, 1)
 
-def Print(x):
-	if x == 0:
-		print '    ***********************'
-		print '    *   Button Pressed!   *'
-		print '    ***********************'
-
 def detect(chn):
 	Led(GPIO.input(BtnPin))
-	Print(GPIO.input(BtnPin))
 
 def loop():
 	while True:

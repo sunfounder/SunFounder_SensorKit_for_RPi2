@@ -1,2 +1,2 @@
 all:
-	gcc barometer.c bmp180.c -lm
+	gcc barometer.c bmp180.c -lm -lwiringPi -lwiringPiDev

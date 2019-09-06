@@ -60,7 +60,7 @@ float tempRead(void)
 	char buf[BUFSIZE];
 	char tempBuf[5];
 	
-	fd = open("/sys/bus/w1/devices/28-031467805fff/w1_slave", O_RDONLY);
+	fd = open("/sys/bus/w1/devices/28-031590bf4aff/w1_slave", O_RDONLY);
 
 	if(-1 == fd){
 		perror("open device file error");

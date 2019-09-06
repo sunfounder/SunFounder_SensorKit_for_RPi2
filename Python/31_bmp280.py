@@ -9,6 +9,7 @@
 * Update      : Cavon    2016-10-09    New release
 **********************************************************************
 '''
+#!/usr/bin/env python3
 import time
 import RPi.GPIO as GPIO
 import smbus

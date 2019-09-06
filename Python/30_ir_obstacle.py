@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 ObstaclePin = 11
@@ -10,7 +10,7 @@ def setup():
 def loop():
 	while True:
 		if (0 == GPIO.input(ObstaclePin)):
-			print "Detected Barrier!"
+			print ("Detected Barrier!")
 			
 
 def destroy():

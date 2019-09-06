@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import PCF8591 as ADC
 import time
 
@@ -8,10 +8,10 @@ def setup():
 def loop():
 	status = 1
 	while True:
-		print 'Value:', ADC.read(0)
+		print ('Value:', ADC.read(0))
 		Value = ADC.read(0)
 		outvalue = map(Value,0,255,120,255)
-                ADC.write(outvalue)
+		ADC.write(outvalue)
 		time.sleep(0.2)
 def destroy():
 	ADC.write(0)

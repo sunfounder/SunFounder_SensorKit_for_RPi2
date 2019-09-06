@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import LCD1602
 import time
 
@@ -26,6 +26,7 @@ def destroy():
 if __name__ == "__main__":
 	try:
 		setup()
+		#loop()
 		while True:
 			pass
 	except KeyboardInterrupt:

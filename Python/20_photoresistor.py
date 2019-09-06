@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import PCF8591 as ADC
 import RPi.GPIO as GPIO
 import time
@@ -14,7 +14,7 @@ def setup():
 def loop():
 	status = 1
 	while True:
-		print 'Value: ', ADC.read(0)
+		print ('Value: ', ADC.read(0))
 		
 		time.sleep(0.2)
 

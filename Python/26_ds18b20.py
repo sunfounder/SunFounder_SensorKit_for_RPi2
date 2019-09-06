@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #----------------------------------------------------------------
 #	Note:
 #		ds18b20's data pin must be connected to pin7.
@@ -12,7 +12,7 @@ def setup():
 	global ds18b20
 	for i in os.listdir('/sys/bus/w1/devices'):
 		if i != 'w1_bus_master1':
-			ds18b20 = i
+			ds18b20 = '28-031590bf4aff'
 
 def read():
 #	global ds18b20
@@ -29,7 +29,7 @@ def read():
 def loop():
 	while True:
 		if read() != None:
-			print "Current temperature : %0.3f C" % read()
+			print ("Current temperature : %0.3f C" % read())
 
 def destroy():
 	pass

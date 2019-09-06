@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #####################################################
 #
 #	DO NOT WATCH THE LASER DERECTELY IN THE EYE!
@@ -16,10 +16,10 @@ def setup():
 
 def loop():
 	while True:
-		print '...Laser on'
+		#'...Laser on'
 		GPIO.output(LedPin, GPIO.LOW)  # led on
 		time.sleep(0.5)
-		print 'Laser off...'
+		#'Laser off...'
 		GPIO.output(LedPin, GPIO.HIGH) # led off
 		time.sleep(0.5)
 

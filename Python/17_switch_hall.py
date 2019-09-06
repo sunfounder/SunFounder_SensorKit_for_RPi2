@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 HallPin = 11
-Gpin   = 12
-Rpin   = 13
+Gpin   = 13
+Rpin   = 12
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
@@ -22,9 +22,9 @@ def Led(x):
 
 def Print(x):
 	if x == 0:
-		print '    ***********************************'
-		print '    *   Detected magnetic materials   *'
-		print '    ***********************************'
+		print ('    ***********************************')
+		print ('    *   Detected magnetic materials   *')
+		print ('    ***********************************')
 
 def detect(chn):
 	Led(GPIO.input(HallPin))

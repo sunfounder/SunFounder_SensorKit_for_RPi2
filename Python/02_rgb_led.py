@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 import time
 
@@ -28,7 +28,9 @@ def map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 def off():
+	GPIO.setmode(GPIO.BOARD)
 	for i in pins:
+		GPIO.setup(pins[i], GPIO.OUT)   # Set pins' mode is output
 		GPIO.output(pins[i], GPIO.HIGH)    # Turn off all leds
 
 def setColor(col):   # For example : col = 0x112233

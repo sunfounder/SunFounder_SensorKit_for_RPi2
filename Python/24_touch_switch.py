@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 TouchPin = 11
-Gpin   = 12
-Rpin   = 13
+Gpin   = 13
+Rpin   = 12
 
 tmp = 0
 
@@ -26,14 +26,14 @@ def Print(x):
 	global tmp
 	if x != tmp:
 		if x == 0:
-			print '    **********'
-			print '    *     ON *'
-			print '    **********'
+			print ('    **********')
+			print ('    *     ON *')
+			print ('    **********')
 	
 		if x == 1:
-			print '    **********'
-			print '    * OFF    *'
-			print '    **********'
+			print ('    **********')
+			print ('    * OFF    *')
+			print ('    **********')
 		tmp = x
 
 def loop():

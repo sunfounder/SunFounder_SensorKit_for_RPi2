@@ -2,10 +2,8 @@
 #include <stdio.h>
 
 #define VibratePin	0
-#define Gpin		1
-#define Rpin		2
-
-int tmp = 0;
+#define Gpin		2
+#define Rpin		1
 
 void LED(int color)
 {
@@ -25,20 +23,10 @@ void LED(int color)
 		printf("LED Error");
 }
 
-void Print(int x){
-	if (x != tmp){
-		if (x == 0)
-			printf("...ON\n");
-		if (x == 1)
-			printf("OFF..\n");
-		tmp = x;
-	}
-}
-
 int main(void)
 {
 	int status = 0;
-	int tmp = 0;
+	int tmp = 1;
 	int value = 1;
 	if(wiringPiSetup() == -1){ //when initialize wiring failed,print messageto screen
 		printf("setup wiringPi failed !");
@@ -55,7 +43,6 @@ int main(void)
 				status = 0;
 			}
 			LED(status);	
-			Print(status);
 			delay(1000);
 		}
 	}

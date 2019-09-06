@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import PCF8591 as ADC
 
 def setup():
@@ -6,7 +6,7 @@ def setup():
 
 def loop():
 	while True:
-		print ADC.read(0)
+		print (ADC.read(0))
 		ADC.write(ADC.read(0))
 
 def destroy():

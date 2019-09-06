@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 IrPin  = 11
@@ -11,7 +11,7 @@ def setup():
 def cnt(ev=None):
 	global count
 	count += 1
-	print 'Received infrared. cnt = ', count
+	print ('Received infrared. cnt = ', count)
 
 def loop():
 	GPIO.add_event_detect(IrPin, GPIO.FALLING, callback=cnt) # wait for falling

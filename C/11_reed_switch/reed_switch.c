@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 #define ReedPin		0
-#define Gpin		1
-#define Rpin		2
+#define Gpin		2
+#define Rpin		1
 
 void LED(char* color)
 {

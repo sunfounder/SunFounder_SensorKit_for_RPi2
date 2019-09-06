@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 PIPin  = 11
-Gpin   = 12
-Rpin   = 13
+Gpin   = 13
+Rpin   = 12
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
@@ -19,16 +19,9 @@ def Led(x):
 	if x == 1:
 		GPIO.output(Rpin, 0)
 		GPIO.output(Gpin, 1)
-
-def Print(x):
-	if x == 1:
-		print '    *************************'
-		print '    *   Light was blocked   *'
-		print '    *************************'
-
+		
 def detect(chn):
 	Led(GPIO.input(PIPin))
-	Print(GPIO.input(PIPin))
 
 def loop():
 	while True:

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 import time
 
@@ -46,7 +46,7 @@ def loop():
 	while True:
 		rotaryDeal()
 		if tmp != globalCounter:
-			print 'globalCounter = %d' % globalCounter
+			print ('globalCounter = %d' % globalCounter)
 			tmp = globalCounter
 
 def destroy():

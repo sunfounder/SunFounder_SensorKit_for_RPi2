@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import RPi.GPIO as GPIO
 import time
@@ -33,8 +33,8 @@ def distance():
 def loop():
 	while True:
 		dis = distance()
-		print dis, 'cm'
-		print ''
+		print (dis, 'cm')
+		print ('')
 		time.sleep(0.3)
 
 def destroy():

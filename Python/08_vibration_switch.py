@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 import time
 
 VibratePin = 11
-Gpin   = 12
-Rpin   = 13
+Gpin   = 13
+Rpin   = 12
 
 tmp = 0
 
@@ -22,30 +22,14 @@ def Led(x):
 		GPIO.output(Rpin, 0)
 		GPIO.output(Gpin, 1)
 	
-
-def Print(x):
-	global tmp
-	if x != tmp:
-		if x == 0:
-			print '    **********'
-			print '    *     ON *'
-			print '    **********'
-	
-		if x == 1:
-			print '    **********'
-			print '    * OFF    *'
-			print '    **********'
-		tmp = x
-
 def loop():
 	state = 0
 	while True:
-		if GPIO.input(VibratePin):
+		if GPIO.input(VibratePin)==0:
 			state = state + 1
 			if state > 1:
 				state = 0
 			Led(state)
-			Print(state)
 			time.sleep(1)
 
 def destroy():

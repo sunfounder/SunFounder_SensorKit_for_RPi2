@@ -1,9 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import RPi.GPIO as GPIO
 
 ReedPin = 11
-Gpin    = 12
-Rpin    = 13
+Gpin    = 13
+Rpin    = 12
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
@@ -20,15 +20,8 @@ def Led(x):
 		GPIO.output(Rpin, 0)
 		GPIO.output(Gpin, 1)
 
-def Print(x):
-	if x == 0:
-		print '    ***********************************'
-		print '    *   Detected Magnetic Material!   *'
-		print '    ***********************************'
-
 def detect(chn):
 	Led(GPIO.input(ReedPin))
-	Print(GPIO.input(ReedPin))
 
 def loop():
 	while True:

@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <wiringPi.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -7,11 +7,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define  BUFSIZE  128
+#define		BUFSIZE		128
 
-char* addr = "/sys/bus/w1/devices/28-031467805fff/w1_slave";
+typedef unsigned char uchar;
+typedef unsigned int  uint;
 
-int main(void)
+float tempRead(void)
 {
 	float temp;
 	int i, j;
@@ -20,8 +21,8 @@ int main(void)
 
 	char buf[BUFSIZE];
 	char tempBuf[5];
-	while (1){
-	fd = open(addr, O_RDONLY);
+	
+	fd = open("/sys/bus/w1/devices/28-031590bf4aff/w1_slave", O_RDONLY);
 
 	if(-1 == fd){
 		perror("open device file error");
@@ -53,9 +54,21 @@ int main(void)
 
 	temp = (float)atoi(tempBuf) / 1000;
 
-	printf("%.3f C\n",temp);
-
 	close(fd);
+
+	return temp;
+}
+
+int main(void)
+{
+	if(wiringPiSetup() == -1){
+		printf("setup wiringPi failed !");
+		return 1; 
 	}
-	return 0;
+    float temp;
+    while(1){
+		temp = tempRead();
+		printf("Current temperature : %0.3f\n", temp);
+    }
+    return 0;
 }

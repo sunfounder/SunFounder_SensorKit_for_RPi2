@@ -14,11 +14,11 @@ int main (void)
 	while(1) // loop forever
 	{
 		value = analogRead  (PCF + 0);
-		//printf("%d\n", value);
-		if (value < 50){
-			count++;
-			printf("Voice In!!  %d\n", count);
+		printf("value: %d\n", value);
+		if (value < 80){
+			printf("Voice In!! \n");
 		}
+		delay(100);
 	}
 	return 0;
 }

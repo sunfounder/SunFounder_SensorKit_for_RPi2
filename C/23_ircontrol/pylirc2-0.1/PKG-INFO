@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: pylirc2
+Version: 0.1
+Summary: Python lirc module. See http://www.lirc.org for more info on lirc and https://launchpad.net/pylirc2 for up-to-date code
+Home-page: UNKNOWN
+Author: Linus McCabe and Paul Hummer
+Author-email: Linus@McCabe.nu
+License: lgpl
+Description: UNKNOWN
+Platform: UNKNOWN

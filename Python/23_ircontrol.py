@@ -1,6 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-import pylirc, time
+import pylirc
+import time
 import RPi.GPIO as GPIO
 
 Rpin = 17
@@ -40,39 +41,39 @@ def RGB(config):
 	global color
 	if config == 'KEY_CHANNELDOWN':
 		color[0] = Lv[0]
-		print 'Red OFF'
+		print ('Red OFF')
 
 	if config == 'KEY_CHANNEL':
 		color[0] = Lv[1]
-		print 'Light Red'
+		print ('Light Red')
 
 	if config == 'KEY_CHANNELUP':
 		color[0] = Lv[2]
-		print 'Red'
+		print ('Red')
 
 	if config == 'KEY_PREVIOUS':
 		color[1] = Lv[0]
-		print 'Green OFF'
+		print ('Green OFF')
 
 	if config == 'KEY_NEXT':
 		color[1] = Lv[1]
-		print 'Light Green'
+		print ('Light Green')
 
 	if config == 'KEY_PLAYPAUSE':
 		color[1] = Lv[2]
-		print 'Green'
+		print ('Green')
 
 	if config == 'KEY_VOLUMEDOWN':
 		color[2] = Lv[0]
-		print 'Blue OFF'
+		print ('Blue OFF')
 
 	if config == 'KEY_VOLUMEUP':
 		color[2] = Lv[1]
-		print 'Light Blue'
+		print ('Light Blue')
 
 	if config == 'KEY_EQUAL':
 		color[2] = Lv[2]
-		print 'BLUE'
+		print ('BLUE')
 
 def loop():
 	while True:
@@ -80,7 +81,7 @@ def loop():
 		
 		while(s):
 			for (code) in s:
-#				print 'Command: ', code["config"] #For debug: Uncomment this
+				print ("Command: ", code["config"]) #For debug: Uncomment this
 #				line to see the return value of buttons
 				RGB(code["config"])
 				setColor(color)

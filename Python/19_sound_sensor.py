@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import PCF8591 as ADC
 import RPi.GPIO as GPIO
 import time
@@ -13,9 +13,9 @@ def loop():
 	while True:
 		voiceValue = ADC.read(0)
 		if voiceValue:
-			print 'Value:', voiceValue
+			print ("Value:", voiceValue)
 			if voiceValue < 50:
-				print "Voice detected! ", count
+				print ("Voice detected! ", count)
 				count += 1
 			time.sleep(0.2)
 

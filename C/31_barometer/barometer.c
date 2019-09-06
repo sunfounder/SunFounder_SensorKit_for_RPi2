@@ -14,10 +14,9 @@ int main(int argc, char **argv){
 			float t = bmp180_temperature(bmp);
 			long p = bmp180_pressure(bmp);
 			float alt = bmp180_altitude(bmp);
-			printf("t = %f, p = %lu, a = %f\n", t, p, alt);
+			printf("temperature = %.2f, pressure = %lu, altitude = %.2f\n", t, p, alt);
 			usleep(2 * 1000 * 1000);
 		}
-		bmp180_close(bmp);
 	}
 	return 0;
 }

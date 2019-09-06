@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 #define HallPin		0
-#define Gpin		1
-#define Rpin		2
+#define Gpin		2
+#define Rpin		1
 
 void LED(char* color)
 {
@@ -38,7 +38,7 @@ int main(void)
 			delay(10);
 			if(0 == digitalRead(HallPin)){
 				LED("RED");	
-				printf("Button is pressed\n");	
+				printf("Detected magnetic materials \n");	
 			}
 		}
 		else if(1 == digitalRead(HallPin)){

@@ -36,6 +36,7 @@ static int bcdToD (unsigned int byte, unsigned int mask)
 
 static unsigned int dToBcd (unsigned int byte)
 {
+  byte = byte % 100;
   return ((byte / 10) << 4) + (byte % 10) ;
 }
 
@@ -132,7 +133,7 @@ static int setDSclock (void)
 
   printf ("Setting the clock in the DS1302 from type in... ") ;
 
-  printf ("\n\nEnter Date(YYMMDD): ") ;
+  printf ("\n\nEnter Date(YYYYMMDD): ") ;
   scanf ("%d", &date) ;
   printf ("Enter time(HHMMSS, 24-hour clock): ") ;
   scanf ("%d", &time) ;

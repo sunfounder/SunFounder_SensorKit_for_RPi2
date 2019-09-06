@@ -66,10 +66,10 @@ void read_dht11_dat()
 		printf("Humidity = %d.%d %% Temperature = %d.%d *C (%.1f *F)\n", 
 				dht11_dat[0], dht11_dat[1], dht11_dat[2], dht11_dat[3], f);
 	}
-	else
-	{
-		printf("Data not good, skip\n");
-	}
+	// else
+	// {
+	// 	printf("Data not good, skip\n");
+	// }
 }
 
 int main (void)

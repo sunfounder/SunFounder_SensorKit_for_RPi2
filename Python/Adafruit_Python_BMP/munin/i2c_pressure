@@ -1,0 +1,36 @@
+#!/usr/bin/python
+# coding: utf-8
+
+from Adafruit_BMP085 import BMP085
+import sys
+
+# ===========================================================================
+# Munin Plugin - Pressure
+# ===========================================================================
+
+# Initialise the BMP085 and use STANDARD mode (default value)
+# bmp = BMP085(0x77, debug=True)
+bmp = BMP085(0x77)
+
+# To specify a different operating mode, uncomment one of the following:
+# bmp = BMP085(0x77, 0)  # ULTRALOWPOWER Mode
+# bmp = BMP085(0x77, 1)  # STANDARD Mode
+# bmp = BMP085(0x77, 2)  # HIRES Mode
+# bmp = BMP085(0x77, 3)  # ULTRAHIRES Mode
+
+temp = bmp.readTemperature()
+
+# Read the current barometric pressure level
+pressure = bmp.readPressure()
+
+is_config = len(sys.argv) == 2 and sys.argv[1] == "config"
+
+if is_config:
+    print "graph_title Pressure (I2C)"
+    print "graph_vlabel mBar"
+    print "graph_category sensors"
+    print "graph_scale no"
+    print "graph_args -A -Y"
+    print "pressure.label Pressure (mBar)"
+else:
+    print "pressure.value %.4f" % (pressure / 100.0)

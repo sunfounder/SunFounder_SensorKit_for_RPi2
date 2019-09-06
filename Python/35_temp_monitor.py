@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import RPi.GPIO as  GPIO
 import importlib
 import time
@@ -9,7 +10,7 @@ LedG	=	12
 LedB	=	13
 Buzz	=	15
 
-#ds18b20 = '28-031467805fff'
+#ds18b20 = '28-031590bf4aff'
 #location = '/sys/bus/w1/devices/' + ds18b20 + '/w1_slave'
 
 joystick	=	importlib.import_module('15_joystick_PS2')
@@ -48,9 +49,9 @@ def loop():
 	while True:
 		edge()
 		temp = ds18b20.read()
-		print 'The lower limit of temperature : ', lowl
-		print 'The upper limit of temperature : ', highl
-		print 'Current temperature : ', temp
+		print ('The lower limit of temperature : ', lowl)
+		print ('The upper limit of temperature : ', highl)
+		print ('Current temperature : ', temp)
 		if float(temp) < float(lowl):
 			rgb.setColor(color['Blue'])
 			for i in range(0, 3):
@@ -67,7 +68,6 @@ def destroy():
 	joystick.destroy()
 	ds18b20.destroy()
 	rgb.destroy()
-	GPIO.cleanup()
 
 if __name__ == "__main__":
 	try:

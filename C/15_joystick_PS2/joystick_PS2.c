@@ -9,27 +9,27 @@ int AIN0 = PCF + 0;
 int AIN1 = PCF + 1;
 int AIN2 = PCF + 2;
 
-char *state[6] = {"home", "up", "down", "left", "right", "pressed"};
+ char *state[7] = {"home", "up", "down", "left", "right", "pressed"};
 
 int direction(){
 	int x, y, b;
-	int tmp;
+	int tmp=0;
 	x = analogRead(AIN1);
 	y = analogRead(AIN0);
 	b = analogRead(AIN2);
-	if (y == 0)
+	if (y <= 30)
 		tmp = 1;		// up
-	if (y == 255)
+	if (y >= 225)
 		tmp = 2;		// down
 	
-	if (x == 255)
+	if (x >= 225)
 		tmp = 3;		// left
-	if (x == 0)
+	if (x <= 30)
 		tmp = 4;		// right
 
-	if (b == 0)
+	if (b <= 30)
 		tmp = 5;		// button preesd
-	if (x-125<15 && x-125>-15 && y-125<15 && y-125>-15 && b == 255)
+	if (x-125<15 && x-125>-15 && y-125<15 && y-125>-15 && b >= 60)
 		tmp = 0;		// home position
 	
 	return tmp;
@@ -37,7 +37,7 @@ int direction(){
 
 int main (void)
 {
-	int tmp;
+	int tmp=0;
 	int status = 0;
 	wiringPiSetup ();
 	// Setup pcf8591 on base pin 120, and address 0x48
