@@ -15,7 +15,13 @@ This is a kit with whole bunch of sensors and activaters, provided by SunFounder
 
 <a id="update"></a>
 ### Update:
+2019-09-06:
+
+ - fix the bugs of print function for python3
+ - fix the bus of ds1302, Barometer,ds18b20.
+
 2016-10-09:
+
  - Add BMP280 both C and Python
      + Add BMP280 for the Newest kit.
 
