@@ -15,6 +15,12 @@ This is a kit with whole bunch of sensors and activaters, provided by SunFounder
 
 <a id="update"></a>
 ### Update:
+2019-10-12:
+
+ - add in the German version of user manual.
+ - update the English user manual for Raspberry Pi 4
+ 
+### Update:
 2019-09-06:
 
  - fix the bugs of print function for python3
