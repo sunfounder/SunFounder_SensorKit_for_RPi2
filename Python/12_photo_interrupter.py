@@ -19,6 +19,7 @@ def Led(x):
 	if x == 1:
 		GPIO.output(Rpin, 0)
 		GPIO.output(Gpin, 1)
+		print ('Light was blocked')
 		
 def detect(chn):
 	Led(GPIO.input(PIPin))

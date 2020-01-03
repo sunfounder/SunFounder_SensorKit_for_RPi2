@@ -1,0 +1,146 @@
+begin
+  remote = *
+  button = KEY_CHANNELDOWN
+  prog = ircontrol
+  config = KEY_CHANNELDOWN
+end
+
+begin
+  remote = *
+  button = KEY_CHANNEL
+  prog = ircontrol
+  config = KEY_CHANNEL
+end
+
+begin
+  remote = *
+  button = KEY_CHANNELUP
+  prog = ircontrol
+  config = KEY_CHANNELUP
+end
+
+begin
+  remote = *
+  button = KEY_PREVIOUS
+  prog = ircontrol
+  config = KEY_PREVIOUS
+end
+
+begin
+  remote = *
+  button = KEY_NEXT
+  prog = ircontrol
+  config = KEY_NEXT
+end
+
+begin
+  remote = *
+  button = KEY_PLAYPAUSE
+  prog = ircontrol
+  config = KEY_PLAYPAUSE
+end
+
+begin
+  remote = *
+  button = KEY_VOLUMEDOWN
+  prog = ircontrol
+  config = KEY_VOLUMEDOWN
+end
+
+begin
+  remote = *
+  button = KEY_VOLUMEUP
+  prog = ircontrol
+  config = KEY_VOLUMEUP
+end
+
+begin
+  remote = *
+  button = KEY_EQUAL
+  prog = ircontrol
+  config = KEY_EQUAL
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_0
+  prog = ircontrol
+  config = KEY_NUMERIC_0
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_1
+  prog = ircontrol
+  config = KEY_NUMERIC_1
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_2
+  prog = ircontrol
+  config = KEY_NUMERIC_2
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_3
+  prog = ircontrol
+  config = KEY_NUMERIC_3
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_4
+  prog = ircontrol
+  config = KEY_NUMERIC_4
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_5
+  prog = ircontrol
+  config = KEY_NUMERIC_5
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_6
+  prog = ircontrol
+  config = KEY_NUMERIC_6
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_7
+  prog = ircontrol
+  config = KEY_NUMERIC_7
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_8
+  prog = ircontrol
+  config = KEY_NUMERIC_8
+end
+
+begin
+  remote = *
+  button = KEY_NUMERIC_9
+  prog = ircontrol
+  config = KEY_NUMERIC_9
+end
+
+begin
+  remote = *
+  button = BTN_0
+  prog = ircontrol
+  config = BTN_0
+ end
+
+begin
+  remote = *
+  button = BTN_1
+  prog = ircontrol
+  config = BTN_1:
+end

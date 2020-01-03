@@ -173,7 +173,7 @@ int main (int argc, char *argv [])
   int weekday ;
 
   wiringPiSetup () ;
-  ds1302setup   (0, 1, 2) ;
+  ds1302setup   (4, 5, 6) ;
 
   if (argc == 2)
   {

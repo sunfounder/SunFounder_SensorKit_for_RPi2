@@ -7,13 +7,13 @@ import RPi.GPIO as GPIO
 Rpin = 17
 Gpin = 18
 Bpin = 27
-blocking = 0;
+blocking = 0
 
 Lv = [0, 20, 90] # Light Level
 color = [0, 0, 0]
 
 def setColor(color):
-#	global p_R, p_G, p_B
+	# global p_R, p_G, p_B
 	p_R.ChangeDutyCycle(100 - color[0])     # Change duty cycle
 	p_G.ChangeDutyCycle(100 - color[1])
 	p_B.ChangeDutyCycle(100 - color[2])
@@ -24,15 +24,18 @@ def setup():
 	GPIO.setup(Rpin, GPIO.OUT)
 	GPIO.setup(Gpin, GPIO.OUT)
 	GPIO.setup(Bpin, GPIO.OUT)
-	
+
 	p_R = GPIO.PWM(Rpin, 2000) # Set Frequece to 2KHz
 	p_G = GPIO.PWM(Gpin, 2000)
 	p_B = GPIO.PWM(Bpin, 2000)
-	
+
 	p_R.start(100)
 	p_G.start(100)
 	p_B.start(100)
-	pylirc.init("pylirc", "./conf", blocking)
+	err = pylirc.init("ircontrol", "./lircrc", blocking)
+	print(err)
+	if (err == 0):
+		raise IOError("IR init error!")
 
 def map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -78,7 +81,7 @@ def RGB(config):
 def loop():
 	while True:
 		s = pylirc.nextcode(1)
-		
+		# print(s)
 		while(s):
 			for (code) in s:
 				print ("Command: ", code["config"]) #For debug: Uncomment this
