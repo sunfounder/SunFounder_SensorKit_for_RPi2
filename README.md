@@ -15,16 +15,19 @@ This is a kit with whole bunch of sensors and activaters, provided by SunFounder
 
 <a id="update"></a>
 ### Update:
+2020.8.13：
+- add a new method of install system
+- Replace the Raspbian to Raspberry Pi OS
+- Add a way to manually update the wiringPi to 2.52
+
 2020-1-3:
  - Replace the 5v to 3.3V in the user manual.
  - update the English user manual for Raspberry Pi 4.
  
-### Update:
 2019-10-12:
  - add in the German version of user manual.
  - update the English user manual for Raspberry Pi 4.
  
-### Update:
 2019-09-06:
 
  - fix the bugs of print function for python3
