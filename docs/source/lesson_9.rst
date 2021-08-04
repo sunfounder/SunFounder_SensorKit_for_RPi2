@@ -78,6 +78,41 @@ The schematic diagram of the module is as shown below:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <wiringPi.h>
+    #include <stdio.h>
+
+    #define    IR    0
+
+    int cnt = 0;
+
+    void myISR(void)
+    {
+        printf("Received infrared. cnt = %d\n", ++cnt);	
+    }
+
+    int main(void)
+    {
+        if(wiringPiSetup() == -1){ //when initialize wiring failed,print messageto screen
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+        
+        if(wiringPiISR(IR, INT_EDGE_FALLING, &myISR) == -1){
+            printf("setup ISR failed !");
+            return 1;
+        }
+
+        //pinMode(IR, INPUT);
+
+        while(1);
+        
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -92,9 +127,43 @@ The schematic diagram of the module is as shown below:
 
     sudo python3 09_ir_receiver.py
 
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import RPi.GPIO as GPIO
+
+    IrPin  = 11
+    count = 0
+
+    def setup():
+        GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+        GPIO.setup(IrPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+    def cnt(ev=None):
+        global count
+        count += 1
+        print ('Received infrared. cnt = ', count)
+
+    def loop():
+        GPIO.add_event_detect(IrPin, GPIO.FALLING, callback=cnt) # wait for falling
+        while True:
+            pass   # Don't do anything
+
+    def destroy():
+        GPIO.cleanup()                     # Release resource
+
+    if __name__ == '__main__':     # Program start from here
+        setup()
+        try:
+            loop()
+        except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+            destroy()
+
 Press any key of the remote. Then you can see the LED on the module
-blinking, and "Received infrared. cnt = xxx" printed on the screen.
-"xxx" means the time you pressed the key(s).
+blinking, and \"Received infrared. cnt = xxx\" printed on the screen.
+\"xxx\" means the time you pressed the key(s).
 
 .. image:: media/image133.jpeg
    :alt: \_MG_2421

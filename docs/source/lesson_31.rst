@@ -85,6 +85,33 @@ step.)
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include "bmp180.h"
+    #include <unistd.h>
+    #include <stdio.h>
+
+    int main(int argc, char **argv){
+        char *i2c_device = "/dev/i2c-1";
+        int address = 0x77;
+
+        void *bmp = bmp180_init(address, i2c_device);
+
+        if(bmp != NULL){
+            int i;
+            for(i = 0; i < 100; i++) {
+                float t = bmp180_temperature(bmp);
+                long p = bmp180_pressure(bmp);
+                float alt = bmp180_altitude(bmp);
+                printf("temperature = %.2f, pressure = %lu, altitude = %.2f\n", t, p, alt);
+                usleep(2 * 1000 * 1000);
+            }
+        }
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 3:** Install smbus for I2C.
@@ -113,6 +140,38 @@ communicate over I2C.
 .. code-block::
 
     sudo python3 31_barometer.py
+
+**Code**
+
+.. code-block:: python
+
+    import Adafruit_BMP.BMP085 as BMP085
+    import time
+
+    def setup():
+        print ('\n Barometer begins...')
+
+    def loop():
+        while True:
+            sensor = BMP085.BMP085()
+            temp = sensor.read_temperature()	# Read temperature to veriable temp
+            pressure = sensor.read_pressure()	# Read pressure to veriable pressure
+
+            print ('')
+            print ('      Temperature = {0:0.2f} C'.format(temp))		# Print temperature
+            print ('      Pressure = {0:0.2f} Pa'.format(pressure))	# Print pressure
+            time.sleep(1)			
+            print ('')
+
+    def destroy():
+        pass
+
+    if __name__ == '__main__':		# Program start from here
+        setup()
+        try:
+            loop()
+        except KeyboardInterrupt:
+            destroy()
 
 Now you can see the temperature and pressure value displayed on the
 screen.

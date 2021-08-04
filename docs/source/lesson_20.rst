@@ -90,6 +90,39 @@ screen. The schematic diagram:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <wiringPi.h>
+    #include <pcf8591.h>
+    #include <math.h>
+
+    #define		PCF     120
+    #define		DOpin	0
+
+    int main()
+    {
+        int analogVal;
+        
+        if(wiringPiSetup() == -1){
+            printf("setup wiringPi failed !");
+            return 1;
+        }
+        // Setup pcf8591 on base pin 120, and address 0x48
+        pcf8591Setup(PCF, 0x48);
+
+        while(1) // loop forever
+        {
+            analogVal = analogRead(PCF + 0);
+            printf("Value: %d\n", analogVal);
+
+            delay (200);
+        }
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -103,6 +136,37 @@ screen. The schematic diagram:
 .. code-block::
 
     sudo python3 20_photoresistor.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import PCF8591 as ADC
+    import RPi.GPIO as GPIO
+    import time
+
+    DO = 17
+    GPIO.setmode(GPIO.BCM)
+
+    def setup():
+        ADC.setup(0x48)
+        GPIO.setup(DO, GPIO.IN)
+
+
+    def loop():
+        status = 1
+        while True:
+            print ('Value: ', ADC.read(0))
+            
+            time.sleep(0.2)
+
+    if __name__ == '__main__':
+        try:
+            setup()
+            loop()
+        except KeyboardInterrupt: 
+            pass		
 
 Now, change light intensity (e.g. cover the module with a pad), and the
 value printed on the screen will change accordingly.

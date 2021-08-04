@@ -265,6 +265,126 @@ again that you’ve connected everything and haven’t crossed any wires.
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <wiringPi.h>
+    #include <softPwm.h>
+    #include <stdio.h>
+    #include <errno.h>
+    #include <stdlib.h>
+    #include <string.h>
+    #include <lirc/lirc_client.h>
+    #include <time.h>
+
+    #define uchar unsigned char
+
+    #define LedPinRed    0
+    #define LedPinGreen  1
+    #define LedPinBlue   2
+
+    uchar color[3] = {0xff, 0xff, 0xff};
+    uchar Lv[3]    = {0xff, 0x44, 0x00};
+
+    char *keymap[21] ={
+        " KEY_CHANNELDOWN ",
+        " KEY_CHANNEL ",
+        " KEY_CHANNELUP ",
+        " KEY_PREVIOUS ",
+        " KEY_NEXT ",
+        " KEY_PLAYPAUSE ",
+        " KEY_VOLUMEDOWN ",
+        " KEY_VOLUMEUP ",
+        " KEY_EQUAL ",
+        " KEY_NUMERIC_0 ",
+        " BTN_0 ",
+        " BTN_1 ",
+        " KEY_NUMERIC_1 ",
+        " KEY_NUMERIC_2 ",
+        " KEY_NUMERIC_3 ",
+        " KEY_NUMERIC_4 ",
+        " KEY_NUMERIC_5 ",
+        " KEY_NUMERIC_6 ",
+        " KEY_NUMERIC_7 ",
+        " KEY_NUMERIC_8 ",
+        " KEY_NUMERIC_9 "};
+
+    void ledInit(void)
+    {
+        softPwmCreate(LedPinRed,  0, 100);
+        softPwmCreate(LedPinGreen,0, 100);
+        softPwmCreate(LedPinBlue, 0, 100);
+    }
+
+    void ledColorSet()
+    {
+        softPwmWrite(LedPinRed,   color[0]);
+        softPwmWrite(LedPinGreen, color[1]);
+        softPwmWrite(LedPinBlue,  color[2]);
+    }
+
+    int key(char *code){
+        int i;
+        int num;
+        for (i=0; i<21; i++){
+            if (strstr(code, keymap[i])){
+                num = i;
+            }
+        }
+        return num + 1;
+    }
+
+    int RGB(int i){
+        switch(i){
+            case 1: color[0] = Lv[0]; printf("Red OFF\n"); break;
+            case 2: color[0] = Lv[1]; printf("Light Red\n"); break;
+            case 3: color[0] = Lv[2]; printf("Dark Red\n"); break;
+            case 4: color[1] = Lv[0]; printf("Green OFF\n"); break;
+            case 5: color[1] = Lv[1]; printf("Light Green\n"); break;
+            case 6: color[1] = Lv[2]; printf("Dark Green\n"); break;
+            case 7: color[2] = Lv[0]; printf("Blue OFF\n"); break;
+            case 8: color[2] = Lv[1]; printf("Light Blue\n"); break;
+            case 9: color[2] = Lv[2]; printf("Dark Green\n"); break;
+        }
+    }
+
+    int main(void)
+    {
+        struct lirc_config *config;
+        int buttonTimer = millis();
+        char *code;
+        char *c;
+        if(wiringPiSetup() == -1){
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+
+        if(lirc_init("lirc",1)==-1)
+            exit(EXIT_FAILURE);
+
+        ledInit();
+        ledColorSet();
+        
+        if(lirc_readconfig(NULL,&config,NULL)==0)
+        {
+            while(lirc_nextcode(&code)==0)
+            {
+                if(code==NULL) continue;{
+                    if (millis() - buttonTimer  > 400){
+                        RGB(key(code));
+                        ledColorSet(color);
+                    }
+                }
+                free(code);
+            }
+            lirc_freeconfig(config);
+        }
+        lirc_deinit();
+        exit(EXIT_SUCCESS);
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 5:** Download and install pylirc:
@@ -313,6 +433,120 @@ Install Pylirc:
 .. code-block::
 
     sudo python3 23_ircontrol.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/python3
+    import pylirc
+    import time
+    import RPi.GPIO as GPIO
+
+    Rpin = 17
+    Gpin = 18
+    Bpin = 27
+    blocking = 0
+
+    Lv = [0, 20, 90] # Light Level
+    color = [0, 0, 0]
+
+    def setColor(color):
+        # global p_R, p_G, p_B
+        p_R.ChangeDutyCycle(100 - color[0])     # Change duty cycle
+        p_G.ChangeDutyCycle(100 - color[1])
+        p_B.ChangeDutyCycle(100 - color[2])
+
+    def setup():
+        global p_R, p_G, p_B
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(Rpin, GPIO.OUT)
+        GPIO.setup(Gpin, GPIO.OUT)
+        GPIO.setup(Bpin, GPIO.OUT)
+
+        p_R = GPIO.PWM(Rpin, 2000) # Set Frequece to 2KHz
+        p_G = GPIO.PWM(Gpin, 2000)
+        p_B = GPIO.PWM(Bpin, 2000)
+
+        p_R.start(100)
+        p_G.start(100)
+        p_B.start(100)
+        err = pylirc.init("ircontrol", "./lircrc", blocking)
+        print(err)
+        if (err == 0):
+            raise IOError("IR init error!")
+
+    def map(x, in_min, in_max, out_min, out_max):
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+
+    def RGB(config):
+        global color
+        if config == 'KEY_CHANNELDOWN':
+            color[0] = Lv[0]
+            print ('Red OFF')
+
+        if config == 'KEY_CHANNEL':
+            color[0] = Lv[1]
+            print ('Light Red')
+
+        if config == 'KEY_CHANNELUP':
+            color[0] = Lv[2]
+            print ('Red')
+
+        if config == 'KEY_PREVIOUS':
+            color[1] = Lv[0]
+            print ('Green OFF')
+
+        if config == 'KEY_NEXT':
+            color[1] = Lv[1]
+            print ('Light Green')
+
+        if config == 'KEY_PLAYPAUSE':
+            color[1] = Lv[2]
+            print ('Green')
+
+        if config == 'KEY_VOLUMEDOWN':
+            color[2] = Lv[0]
+            print ('Blue OFF')
+
+        if config == 'KEY_VOLUMEUP':
+            color[2] = Lv[1]
+            print ('Light Blue')
+
+        if config == 'KEY_EQUAL':
+            color[2] = Lv[2]
+            print ('BLUE')
+
+    def loop():
+        while True:
+            s = pylirc.nextcode(1)
+            # print(s)
+            while(s):
+                for (code) in s:
+                    print ("Command: ", code["config"]) 
+                    RGB(code["config"])
+                    setColor(color)
+                if(not blocking):
+                    s = pylirc.nextcode(1)
+                else:
+                    s = []
+
+    def destroy():
+        p_R.stop()
+        p_G.stop()
+        p_B.stop()
+        GPIO.output(Rpin, GPIO.HIGH)    # Turn off all leds
+        GPIO.output(Gpin, GPIO.HIGH)
+        GPIO.output(Bpin, GPIO.HIGH)
+        GPIO.cleanup()
+        pylirc.exit()
+
+    if __name__ == '__main__':
+        try:
+            setup()
+            loop()
+        except KeyboardInterrupt:
+            destroy()
 
 Each of the top three rows of buttons on the remote control represents a
 kind of color, i.e. red, green, and blue, top to bottom. Each column

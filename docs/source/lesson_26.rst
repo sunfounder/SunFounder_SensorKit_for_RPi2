@@ -140,7 +140,7 @@ current temperature is 26187/1000=26.187 ℃.
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/26_ds18b20/
     nano ds18b20.c
 
-Find the following line, replace "28-00000495db35" with your
+Find the following line, replace \"28-00000495db35\" with your
 sensor address. Save and exit.
 
 .. code-block::
@@ -159,6 +159,85 @@ sensor address. Save and exit.
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <wiringPi.h>
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <fcntl.h>
+    #include <unistd.h>
+    #include <errno.h>
+    #include <stdlib.h>
+    #include <stdio.h>
+
+    #define		BUFSIZE		128
+
+    typedef unsigned char uchar;
+    typedef unsigned int  uint;
+
+    float tempRead(void)
+    {
+        float temp;
+        int i, j;
+        int fd;
+        int ret;
+
+        char buf[BUFSIZE];
+        char tempBuf[5];
+        
+        fd = open("/sys/bus/w1/devices/28-031590bf4aff/w1_slave", O_RDONLY);
+
+        if(-1 == fd){
+            perror("open device file error");
+            return 1;
+        }
+
+        while(1){
+            ret = read(fd, buf, BUFSIZE);
+            if(0 == ret){
+                break;	
+            }
+            if(-1 == ret){
+                if(errno == EINTR){
+                    continue;	
+                }
+                perror("read()");
+                close(fd);
+                return 1;
+            }
+        }
+
+        for(i=0;i<sizeof(buf);i++){
+            if(buf[i] == 't'){
+                for(j=0;j<sizeof(tempBuf);j++){
+                    tempBuf[j] = buf[i+2+j]; 	
+                }
+            }	
+        }
+
+        temp = (float)atoi(tempBuf) / 1000;
+
+        close(fd);
+
+        return temp;
+    }
+
+    int main(void)
+    {
+        if(wiringPiSetup() == -1){
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+        float temp;
+        while(1){
+            temp = tempRead();
+            printf("Current temperature : %0.3f\n", temp);
+        }
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 5:** Change directory and edit.
@@ -173,6 +252,48 @@ sensor address. Save and exit.
 .. code-block::
 
     sudo python3 26_ds18b20.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import os
+
+    ds18b20 = ''
+
+    def setup():
+        global ds18b20
+        for i in os.listdir('/sys/bus/w1/devices'):
+            if i != 'w1_bus_master1':
+                ds18b20 = '28-031590bf4aff'
+
+    def read():
+    #	global ds18b20
+        location = '/sys/bus/w1/devices/' + ds18b20 + '/w1_slave'
+        tfile = open(location)
+        text = tfile.read()
+        tfile.close()
+        secondline = text.split("\n")[1]
+        temperaturedata = secondline.split(" ")[9]
+        temperature = float(temperaturedata[2:])
+        temperature = temperature / 1000
+        return temperature
+        
+    def loop():
+        while True:
+            if read() != None:
+                print ("Current temperature : %0.3f C" % read())
+
+    def destroy():
+        pass
+
+    if __name__ == '__main__':
+        try:
+            setup()
+            loop()
+        except KeyboardInterrupt:
+            destroy()
 
 Now, you can see the current temperature value displayed on the screen.
 

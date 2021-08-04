@@ -72,6 +72,110 @@ this step.)
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <wiringPi.h>
+    #include <wiringPiI2C.h>
+    #include <string.h>
+
+    int LCDAddr = 0x27;
+    int BLEN = 1;
+    int fd;
+
+    void write_word(int data){
+        int temp = data;
+        if ( BLEN == 1 )
+            temp |= 0x08;
+        else
+            temp &= 0xF7;
+        wiringPiI2CWrite(fd, temp);
+    }
+
+    void send_command(int comm){
+        int buf;
+        // Send bit7-4 firstly
+        buf = comm & 0xF0;
+        buf |= 0x04;			// RS = 0, RW = 0, EN = 1
+        write_word(buf);
+        delay(2);
+        buf &= 0xFB;			// Make EN = 0
+        write_word(buf);
+
+        // Send bit3-0 secondly
+        buf = (comm & 0x0F) << 4;
+        buf |= 0x04;			// RS = 0, RW = 0, EN = 1
+        write_word(buf);
+        delay(2);
+        buf &= 0xFB;			// Make EN = 0
+        write_word(buf);
+    }
+
+    void send_data(int data){
+        int buf;
+        // Send bit7-4 firstly
+        buf = data & 0xF0;
+        buf |= 0x05;			// RS = 1, RW = 0, EN = 1
+        write_word(buf);
+        delay(2);
+        buf &= 0xFB;			// Make EN = 0
+        write_word(buf);
+
+        // Send bit3-0 secondly
+        buf = (data & 0x0F) << 4;
+        buf |= 0x05;			// RS = 1, RW = 0, EN = 1
+        write_word(buf);
+        delay(2);
+        buf &= 0xFB;			// Make EN = 0
+        write_word(buf);
+    }
+
+    void init(){
+        send_command(0x33);	// Must initialize to 8-line mode at first
+        delay(5);
+        send_command(0x32);	// Then initialize to 4-line mode
+        delay(5);
+        send_command(0x28);	// 2 Lines & 5*7 dots
+        delay(5);
+        send_command(0x0C);	// Enable display without cursor
+        delay(5);
+        send_command(0x01);	// Clear Screen
+        wiringPiI2CWrite(fd, 0x08);
+    }
+
+    void clear(){
+        send_command(0x01);	//clear Screen
+    }
+
+    void write(int x, int y, char data[]){
+        int addr, i;
+        int tmp;
+        if (x < 0)  x = 0;
+        if (x > 15) x = 15;
+        if (y < 0)  y = 0;
+        if (y > 1)  y = 1;
+
+        // Move cursor
+        addr = 0x80 + 0x40 * y + x;
+        send_command(addr);
+        
+        tmp = strlen(data);
+        for (i = 0; i < tmp; i++){
+            send_data(data[i]);
+        }
+    }
+
+    void main(){
+        fd = wiringPiI2CSetup(LCDAddr);
+        init();
+        write(0, 0, "Greetings!");
+        write(1, 1, "From SunFounder");
+        delay(2000);
+        clear();
+    }
+
 **For Python Users:**
 
 **Step 3:** Change directory.
@@ -86,6 +190,44 @@ this step.)
 
     sudo python3 30_i2c_lcd1602.py
 
-Now you can see “Greetings! From SunFounder” displayed on the LCD.
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import LCD1602
+    import time
+
+    def setup():
+        LCD1602.init(0x27, 1)	# init(slave address, background light)
+        LCD1602.write(0, 0, 'Greetings!!')
+        LCD1602.write(1, 1, 'from SunFounder')
+        time.sleep(2)
+
+    def loop():
+        space = '                '
+        greetings = 'Thank you for buying SunFounder Sensor Kit for Raspberry! ^_^'
+        greetings = space + greetings
+        while True:
+            tmp = greetings
+            for i in range(0, len(greetings)):
+                LCD1602.write(0, 0, tmp)
+                tmp = tmp[1:]
+                time.sleep(0.8)
+                LCD1602.clear()
+
+    def destroy():
+        pass	
+
+    if __name__ == "__main__":
+        try:
+            setup()
+            #loop()
+            while True:
+                pass
+        except KeyboardInterrupt:
+            destroy()
+
+Now you can see \"Greetings! From SunFounder\" displayed on the LCD.
 
 .. image:: media/image230.jpeg

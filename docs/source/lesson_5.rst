@@ -79,6 +79,36 @@ The schematic diagram of the module is as shown below:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <wiringPi.h>
+    #include <stdio.h>
+
+    #define LaserPin    0
+
+    int main(void)
+    {
+        if(wiringPiSetup() == -1){ //when initialize wiring failed,print messageto screen
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+        //printf("linker LedPin : GPIO %d(wiringPi pin)\n",LedPin); //when initialize wiring successfully,print message to screen
+
+        pinMode(LaserPin, OUTPUT);
+
+        while(1){
+            digitalWrite(LaserPin, HIGH);
+            delay(500);
+            digitalWrite(LaserPin, LOW);
+            delay(500);
+        }
+
+        return 0;
+    }
+
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -92,6 +122,41 @@ The schematic diagram of the module is as shown below:
 .. code-block::
 
     sudo python3 05_laser.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import RPi.GPIO as GPIO
+    import time
+
+    LedPin = 11    # pin11
+
+    def setup():
+        GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+        GPIO.setup(LedPin, GPIO.OUT)   # Set LedPin's mode is output
+        GPIO.output(LedPin, GPIO.HIGH) # Set LedPin high(+3.3V) to off led
+
+    def loop():
+        while True:
+            #'...Laser on'
+            GPIO.output(LedPin, GPIO.LOW)  # led on
+            time.sleep(0.5)
+            #'Laser off...'
+            GPIO.output(LedPin, GPIO.HIGH) # led off
+            time.sleep(0.5)
+
+    def destroy():
+        GPIO.output(LedPin, GPIO.HIGH)     # led off
+        GPIO.cleanup()                     # Release resource
+
+    if __name__ == '__main__':     # Program start from here
+        setup()
+        try:
+            loop()
+        except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+            destroy()
 
 Now you can see the module send out Morse signals.
 

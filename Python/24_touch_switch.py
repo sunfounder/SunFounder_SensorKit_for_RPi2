@@ -21,7 +21,6 @@ def Led(x):
 		GPIO.output(Rpin, 0)
 		GPIO.output(Gpin, 1)
 	
-
 def Print(x):
 	global tmp
 	if x != tmp:

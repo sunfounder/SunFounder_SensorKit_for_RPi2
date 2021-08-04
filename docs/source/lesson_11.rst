@@ -28,7 +28,7 @@ to detect the existence of a magnetic field.
 **Experimental Principle**
 
 A reed switch is a type of line switch component that realizes control
-by magnetic signals. It induces by a magnet. The “switch" here means dry
+by magnetic signals. It induces by a magnet. The \"switch\" here means dry
 reed pipe, which is a kind of contact passive electronic switch
 component with the advantage of simple structure, small size, and
 convenient control. The shell of a reed switch is commonly a sealed
@@ -103,6 +103,64 @@ The schematic diagram of the module is as shown below:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <wiringPi.h>
+    #include <stdio.h>
+
+    #define ReedPin		0
+    #define Gpin		2
+    #define Rpin		1
+
+    void LED(char* color)
+    {
+        pinMode(Gpin, OUTPUT);
+        pinMode(Rpin, OUTPUT);
+        if (color == "RED")
+        {
+            digitalWrite(Rpin, HIGH);
+            digitalWrite(Gpin, LOW);
+        }
+        else if (color == "GREEN")
+        {
+            digitalWrite(Rpin, LOW);
+            digitalWrite(Gpin, HIGH);
+        }
+        else
+            printf("LED Error");
+    }
+
+    int main(void)
+    {
+        if(wiringPiSetup() == -1){ //when initialize wiring failed,print messageto screen
+            printf("setup wiringPi failed !");
+            return 1; 
+        }
+
+        pinMode(ReedPin, INPUT);
+        LED("GREEN");
+        
+        while(1){
+            if(0 == digitalRead(ReedPin)){
+                delay(10);
+                if(0 == digitalRead(ReedPin)){
+                    LED("RED");	
+                    printf("Detected Magnetic Material!\n");	
+                }
+            }
+            else if(1 == digitalRead(ReedPin)){
+                delay(10);
+                if(1 == digitalRead(ReedPin)){
+                    while(!digitalRead(ReedPin));
+                    LED("GREEN");
+                }
+            }
+        }
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -117,8 +175,53 @@ The schematic diagram of the module is as shown below:
 
     sudo python3 11_reed_switch.py
 
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import RPi.GPIO as GPIO
+
+    ReedPin = 11
+    Gpin    = 13
+    Rpin    = 12
+
+    def setup():
+        GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+        GPIO.setup(Gpin, GPIO.OUT)     # Set Green Led Pin mode to output
+        GPIO.setup(Rpin, GPIO.OUT)     # Set Red Led Pin mode to output
+        GPIO.setup(ReedPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)    # Set BtnPin's mode is input, and pull up to high level(3.3V)
+        GPIO.add_event_detect(ReedPin, GPIO.BOTH, callback=detect, bouncetime=200)
+
+    def Led(x):
+        if x == 0:
+            GPIO.output(Rpin, 1)
+            GPIO.output(Gpin, 0)
+        if x == 1:
+            GPIO.output(Rpin, 0)
+            GPIO.output(Gpin, 1)
+
+    def detect(chn):
+        Led(GPIO.input(ReedPin))
+
+    def loop():
+        while True:
+            pass
+
+    def destroy():
+        GPIO.output(Gpin, GPIO.HIGH)       # Green led off
+        GPIO.output(Rpin, GPIO.HIGH)       # Red led off
+        GPIO.cleanup()                     # Release resource
+
+    if __name__ == '__main__':     # Program start from here
+        setup()
+        try:
+            loop()
+        except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+            destroy()
+
 Then the LED will flash green. Place a magnet near the reed switch,
-"Detected Magnetic Material!" will be printed on the screen and the LED
+\"Detected Magnetic Material!\" will be printed on the screen and the LED
 will change to red. Move away the magnet, the LED will turn green again.
 
 .. image:: media/image144.jpeg

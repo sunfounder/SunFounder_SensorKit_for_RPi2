@@ -89,7 +89,6 @@ void write(int x, int y, char data[]){
 	}
 }
 
-
 void main(){
 	fd = wiringPiI2CSetup(LCDAddr);
 	init();

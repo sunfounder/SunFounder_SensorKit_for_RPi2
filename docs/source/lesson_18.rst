@@ -130,6 +130,88 @@ The schematic diagram for the thermistor module:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <wiringPi.h>
+    #include <pcf8591.h>
+    #include <math.h>
+
+    #define		PCF     120
+    #define		DOpin	0
+
+    void Print(int x)
+    {
+        switch(x)
+        {
+            case 0:
+                printf("\n************\n"  );
+                printf(  "* Too Hot! *\n"  );
+                printf(  "************\n\n");
+            break;
+            case 1:
+                printf("\n***********\n"  );
+                printf(  "* Better~ *\n"  );
+                printf(  "***********\n\n");
+            break;
+            default:
+                printf("\n**********************\n"  );
+                printf(  "* Print value error. *\n"  );
+                printf(  "**********************\n\n");
+            break;
+        }
+    }
+
+    int main()
+    {
+        unsigned char analogVal;
+        double Vr, Rt, temp;
+        int tmp, status;
+        
+        if(wiringPiSetup() == -1){
+            printf("setup wiringPi failed !");
+            return 1;
+        }
+        // Setup pcf8591 on base pin 120, and address 0x48
+        pcf8591Setup(PCF, 0x48);
+
+        pinMode(DOpin, INPUT);
+
+        status = 0;
+        while(1) // loop forever
+        {
+            printf("loop");
+            analogVal = analogRead(PCF + 0);
+            Vr = 5 * (double)(analogVal) / 255;
+            Rt = 10000 * (double)(Vr) / (5 - (double)(Vr));
+            temp = 1 / (((log(Rt/10000)) / 3950)+(1 / (273.15 + 25)));
+            temp = temp - 273.15;
+            printf("Current temperature : %lf\n", temp);
+            
+            // For a threshold, uncomment one of the code for
+            // which module you use. DONOT UNCOMMENT BOTH!
+            //---------------------------------------------
+            // 1. For Analog Temperature module(with DO)
+            tmp = digitalRead(DOpin);
+
+            // 2. For Thermister module(with sig pin)
+            // if (temp > 33) tmp = 0;
+            // else if (temp < 31) tmp = 1;
+            //---------------------------------------------
+
+            if (tmp != status)
+            {
+                Print(tmp);
+                status = tmp;
+            }
+
+            delay (200);
+        }
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -143,6 +225,74 @@ The schematic diagram for the thermistor module:
 .. code-block::
 
     sudo python3 18_thermistor.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import PCF8591 as ADC
+    import RPi.GPIO as GPIO
+    import time
+    import math
+
+    DO = 17
+    GPIO.setmode(GPIO.BCM)
+
+    def setup():
+        ADC.setup(0x48)
+        GPIO.setup(DO, GPIO.IN)
+
+    def Print(x):
+        if x == 1:
+            print ('')
+            print ('***********')
+            print ('* Better~ *')
+            print ('***********')
+            print ('')
+        if x == 0:
+            print ('')
+            print ('************')
+            print ('* Too Hot! *')
+            print ('************')
+            print ('')
+
+    def loop():
+        status = 1
+        tmp = 1
+        while True:
+            analogVal = ADC.read(0)
+            Vr = 5 * float(analogVal) / 255
+            Rt = 10000 * Vr / (5 - Vr)
+            temp = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
+            temp = temp - 273.15
+            print ('temperature = ', temp, 'C')
+
+            # For a threshold, uncomment one of the code for
+            # which module you use. DONOT UNCOMMENT BOTH!
+            #################################################
+            # 1. For Analog Temperature module(with DO)
+            tmp = GPIO.input(DO)
+            # 
+            # 2. For Thermister module(with sig pin)
+            #if temp > 33:
+            #	tmp = 0
+            #elif temp < 31:
+            #	tmp = 1
+            #################################################
+
+            if tmp != status:
+                Print(tmp)
+                status = tmp
+
+            time.sleep(0.2)
+
+    if __name__ == '__main__':
+        try:
+            setup()
+            loop()
+        except KeyboardInterrupt: 
+            pass	
 
 Now touch the thermistor and you can see the value of current
 temperature printed on the screen change accordingly.
@@ -218,9 +368,9 @@ users).
 
 You can still see temperature value printed on the screen constantly. If
 you pinch the thermistor for a while, its temperature will rise slowly.
-"Too Hot!" will be printed on the screen. Release your fingers, and let
+\"Too Hot!\" will be printed on the screen. Release your fingers, and let
 it stay in the open air for a while, or blow on the module. When the
-temperature drops down slowly, "Better" will be printed.
+temperature drops down slowly, \"Better\" will be printed.
 
 .. note:: 
     The analog temperature sensor adjusts alarm temperature by the

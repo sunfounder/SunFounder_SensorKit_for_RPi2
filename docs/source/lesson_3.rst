@@ -51,7 +51,8 @@ Build the circuit.
    :height: 4.40833in
 
 .. note::
-    There are two “GND” pins on the module. You only need to connect one of them.
+
+    There are two \"GND\" pins on the module. You only need to connect one of them.
 
 Now, you will see 7-color auto-flash LED flashing seven colors.
 

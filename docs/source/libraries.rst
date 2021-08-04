@@ -25,7 +25,7 @@ Test whether RPi.GPIO is installed or not, type in python:
 .. image:: media/image89.png
    :width: 800
 
-In Python CLI, input “import RPi.GPIO”, If no error prompts, it means
+In Python CLI, input \"import RPi.GPIO\", If no error prompts, it means
 RPi.GPIO is installed.
 
 .. code-block::

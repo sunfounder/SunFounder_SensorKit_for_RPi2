@@ -129,6 +129,36 @@ The schematic diagram of the module is as shown below:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+   #include <wiringPi.h>
+   #include <stdio.h>
+
+   #define RelayPin      0
+
+   int main(void)
+   {
+      if(wiringPiSetup() == -1){ //when initialize wiring failed,print messageto screen
+         printf("setup wiringPi failed !");
+         return 1; 
+      }
+   //	printf("linker LedPin : GPIO %d(wiringPi pin)\n",VoicePin); //when initialize wiring successfully,print message to screen
+      
+      pinMode(RelayPin, OUTPUT);
+
+      while(1){
+            digitalWrite(RelayPin, LOW);			
+            delay(1000);
+            digitalWrite(RelayPin, HIGH);
+            delay(1000);
+      }
+
+      return 0;
+   }
+
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -142,6 +172,41 @@ The schematic diagram of the module is as shown below:
 .. code-block::
 
     sudo python3 04_relay.py
+
+**Code**
+
+.. code-block:: python
+
+   #!/usr/bin/env python3
+   import RPi.GPIO as GPIO
+   import time
+
+   RelayPin = 11    # pin11
+
+   def setup():
+      GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+      GPIO.setup(RelayPin, GPIO.OUT)
+      GPIO.output(RelayPin, GPIO.HIGH)
+
+   def loop():
+      while True:
+         #'...relayd on'
+         GPIO.output(RelayPin, GPIO.LOW)
+         time.sleep(0.5)
+         #'relay off...'
+         GPIO.output(RelayPin, GPIO.HIGH)
+         time.sleep(0.5)
+
+   def destroy():
+      GPIO.output(RelayPin, GPIO.HIGH)
+      GPIO.cleanup()                     # Release resource
+
+   if __name__ == '__main__':     # Program start from here
+      setup()
+      try:
+         loop()
+      except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+         destroy()
 
 Now, you may hear the ticktock. That's the normally closed contact
 opened and the normally open contact closed. You can attach a high

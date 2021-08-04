@@ -63,7 +63,7 @@ SD card.
     If using the Raspberry Pi Imager on Windows 10 with Controlled
     Folder Access enabled, you will need to explicitly allow the Raspberry
     Pi Imager permission to write the SD card. If this is not done,
-    Raspberry Pi Imager will fail with a "failed to write" error.
+    Raspberry Pi Imager will fail with a \"failed to write\" error.
 
 -  **Using Raspberry Pi OS**
 
@@ -155,8 +155,8 @@ the following link:
 
 https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
 
-You need to replace “\ **SSID**\ ” with your custom name of WiFi and
-“\ **PASSWORD**\ ” with your password.
+You need to replace \"**SSID**\" with your custom name of WiFi and
+\"**PASSWORD**\" with your password.
 
 By doing these, the Raspberry Pi OS will move this file to the target
 directory automatically to overwrite the original WIFI configuration
@@ -228,7 +228,7 @@ it.
 
 **Step 2**
 
-Type in **ssh pi@ip_address** . “pi”is your username and “ip_address” is
+Type in **ssh pi@ip_address** . \"pi\" is your username and \"ip_address\" is
 your IP address. For example:
 
 .. code-block::
@@ -237,7 +237,7 @@ your IP address. For example:
 
 **Step 3**
 
-Input ”yes”.
+Input \"yes\".
 
 .. image:: media/image71.png
    :width: 600
@@ -292,8 +292,8 @@ the IP address, there prompts a security reminder. Just click **Yes**.
 
 **Step 4**
 
-When the PuTTY window prompts “\ **login as:”**, type in
-“\ **pi”**\ (the user name of the RPi), and **password: “**\ raspberry”
+When the PuTTY window prompts \"**login as:**\", type in
+\"**pi**\" (the user name of the RPi), and **password:** \"raspberry\"
 (the default one, if you haven't changed it).
 
 .. image:: media/image75.png
@@ -340,7 +340,7 @@ Input the following command:
 
 **Step 2**
 
-On the config interface, select “\ **Interfacing Options**\ ” by the
+On the config interface, select \"**Interfacing Options**\" by the
 forward and backward keys.
 
 .. image:: media/image76.png
@@ -371,7 +371,7 @@ installation is done, open it.
 
 **Step 2**
 
-Then select “\ **New connection**\ ”.
+Then select \"**New connection**\".
 
    .. image:: media/image79.png
       :alt: IMG_285
@@ -437,7 +437,7 @@ Input the following instructions to install XRDP.
 
 Later, the installation starts.
 
-Enter "Y", press key “Enter” to confirm.
+Enter \"Y\", press key \"Enter\" to confirm.
 
 .. image:: media/image84.png
    :width: 600
@@ -458,8 +458,8 @@ difference between the two. The next example is Windows remote desktop.
 
 **Step 2**
 
-Type in“mstsc” in Run (WIN+R) to open the Remote Desktop Connection, and
-input the IP address of Raspberry Pi, then click on “Connect”.
+Type in \"mstsc\" in Run (WIN+R) to open the Remote Desktop Connection, and
+input the IP address of Raspberry Pi, then click on \"Connect\".
 
 .. image:: media/image85.png
    :width: 700
@@ -467,8 +467,8 @@ input the IP address of Raspberry Pi, then click on “Connect”.
 **Step 3**
 
 There will be xrdp login screen. Enter the user name and password of RPi
-and click OK. By default, the user name of Raspberry Pi is **“pi”** and
-the password is **“raspberry”**.
+and click OK. By default, the user name of Raspberry Pi is \"**pi**\" and
+the password is \"**raspberry**\".
 
 .. image:: media/image86.png
    :alt: IMG_292

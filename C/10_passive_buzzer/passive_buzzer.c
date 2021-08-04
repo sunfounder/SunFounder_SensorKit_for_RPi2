@@ -4,7 +4,6 @@
 
 #define BuzPin    0
 
-
 #define  CL1  131
 #define  CL2  147
 #define  CL3  165
@@ -35,7 +34,6 @@ int song_1[] = {CM3,CM5,CM6,CM3,CM2,CM3,CM5,CM6,CH1,CM6,CM5,CM1,CM3,CM2,
 
 int beat_1[] = {1,1,3,1,1,3,1,1,1,1,1,1,1,1,3,1,1,3,1,1,1,1,1,1,1,2,1,1,
 				1,1,1,1,1,1,3};
-
 
 int song_2[] = {CM1,CM1,CM1,CL5,CM3,CM3,CM3,CM1,CM1,CM3,CM5,CM5,CM4,CM3,CM2,
 				CM2,CM3,CM4,CM4,CM3,CM2,CM3,CM1,CM1,CM3,CM2,CL5,CL7,CM2,CM1
@@ -70,6 +68,5 @@ int main(void)
 			delay(beat_2[i] * 500);
 		}	
 	}
-
 	return 0;
 }

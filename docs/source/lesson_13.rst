@@ -135,6 +135,32 @@ step.)
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <wiringPi.h>
+    #include <pcf8591.h>
+
+    #define PCF       120
+
+    int main (void)
+    {
+        int value ;
+        wiringPiSetup () ;
+        // Setup pcf8591 on base pin 120, and address 0x48
+        pcf8591Setup (PCF, 0x48) ;
+        while(1) // loop forever
+        {
+            value = analogRead  (PCF + 0) ;
+            printf("%d\n", value);
+            analogWrite (PCF + 0, value) ;
+            delay (10) ;
+        }
+        return 0 ;
+    }
+
 **For Python Users:**
 
 **Step 3:** Change directory.
@@ -148,6 +174,31 @@ step.)
 .. code-block::
 
     sudo python3 13_pcf8591.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import PCF8591 as ADC
+
+    def setup():
+        ADC.setup(0x48)
+
+    def loop():
+        while True:
+            print (ADC.read(0))
+            ADC.write(ADC.read(0))
+
+    def destroy():
+        ADC.write(0)
+
+    if __name__ == "__main__":
+        try:
+            setup()
+            loop()
+        except KeyboardInterrupt:
+            destroy()
 
 Now, turn the knob of the potentiometer on PCF8591, and you can see the
 luminance of the LED change and a value between 0 and 255 printed on the

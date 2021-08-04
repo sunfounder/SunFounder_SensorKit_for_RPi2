@@ -92,6 +92,82 @@ left or right as long as you know the state of output 2.
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <string.h>
+    #include <errno.h>
+    #include <stdlib.h>
+    #include <wiringPi.h>
+
+    #define  RoAPin    0
+    #define  RoBPin    1
+    #define  SWPin     2
+
+    static volatile int globalCounter = 0 ;
+
+    unsigned char flag;
+    unsigned char Last_RoB_Status;
+    unsigned char Current_RoB_Status;
+
+    void btnISR(void)
+    {
+        globalCounter = 0;
+    }
+
+    void rotaryDeal(void)
+    {
+        Last_RoB_Status = digitalRead(RoBPin);
+
+        while(!digitalRead(RoAPin)){
+            Current_RoB_Status = digitalRead(RoBPin);
+            flag = 1;
+        }
+
+        if(flag == 1){
+            flag = 0;
+            if((Last_RoB_Status == 0)&&(Current_RoB_Status == 1)){
+                globalCounter ++;	
+            }
+            if((Last_RoB_Status == 1)&&(Current_RoB_Status == 0)){
+                globalCounter --;
+            }
+        }
+    }
+
+    int main(void)
+    {
+        if(wiringPiSetup() < 0){
+            fprintf(stderr, "Unable to setup wiringPi:%s\n",strerror(errno));
+            return 1;
+        }
+
+        pinMode(SWPin, INPUT);
+        pinMode(RoAPin, INPUT);
+        pinMode(RoBPin, INPUT);
+
+        pullUpDnControl(SWPin, PUD_UP);
+
+        if(wiringPiISR(SWPin, INT_EDGE_FALLING, &btnISR) < 0){
+            fprintf(stderr, "Unable to init ISR\n",strerror(errno));	
+            return 1;
+        }
+        
+        int tmp = 0;
+
+        while(1){
+            rotaryDeal();
+            if (tmp != globalCounter){
+                printf("%d\n", globalCounter);
+                tmp = globalCounter;
+            }
+        }
+
+        return 0;
+    }
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -105,6 +181,71 @@ left or right as long as you know the state of output 2.
 .. code-block::
 
     sudo python3 27_rotary_encoder.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import RPi.GPIO as GPIO
+    import time
+
+    RoAPin = 11    # CLK Pin
+    RoBPin = 12    # DT Pin
+    BtnPin = 13    # Button Pin
+
+    globalCounter = 0
+
+    flag = 0
+    Last_RoB_Status = 0
+    Current_RoB_Status = 0
+
+    def setup():
+        GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
+        GPIO.setup(RoAPin, GPIO.IN)    # input mode
+        GPIO.setup(RoBPin, GPIO.IN)
+        GPIO.setup(BtnPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+    def rotaryDeal():
+        global flag
+        global Last_RoB_Status
+        global Current_RoB_Status
+        global globalCounter
+        Last_RoB_Status = GPIO.input(RoBPin)
+        while(not GPIO.input(RoAPin)):
+            Current_RoB_Status = GPIO.input(RoBPin)
+            flag = 1
+        if flag == 1:
+            flag = 0
+            if (Last_RoB_Status == 0) and (Current_RoB_Status == 1):
+                globalCounter = globalCounter + 1
+            if (Last_RoB_Status == 1) and (Current_RoB_Status == 0):
+                globalCounter = globalCounter - 1
+
+    def btnISR(channel):
+        global globalCounter
+        globalCounter = 0
+
+    def loop():
+        global globalCounter
+        tmp = 0	# Rotary Temperary
+
+        GPIO.add_event_detect(BtnPin, GPIO.FALLING, callback=btnISR)
+        while True:
+            rotaryDeal()
+            if tmp != globalCounter:
+                print ('globalCounter = %d' % globalCounter)
+                tmp = globalCounter
+
+    def destroy():
+        GPIO.cleanup()             # Release resource
+
+    if __name__ == '__main__':     # Program start from here
+        setup()
+        try:
+            loop()
+        except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+            destroy()
 
 Now rotate the shaft of the rotary encoder, and the value printed on the
 screen will change. Rotate the rotary encoder clockwise, the value will

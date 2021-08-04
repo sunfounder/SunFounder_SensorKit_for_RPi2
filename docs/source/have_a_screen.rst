@@ -97,8 +97,8 @@ the desktop of the system will appear.
 
 **Step 8**
 
-If you run Raspberry Pi for the first time, the application of “Welcome
-to Raspberry Pi”  pops up and guides you to perform the initial setup.
+If you run Raspberry Pi for the first time, the application of \"Welcome
+to Raspberry Pi\"  pops up and guides you to perform the initial setup.
 
 .. image:: media/image57.png
    :alt: IMG_262
@@ -107,7 +107,7 @@ to Raspberry Pi”  pops up and guides you to perform the initial setup.
 
 **Step 9**
 
-Set country/region, language and time zone, and then click “next” again.
+Set country/region, language and time zone, and then click \"next\" again.
 
 .. image:: media/image58.png
    :alt: IMG_263
@@ -116,7 +116,7 @@ Set country/region, language and time zone, and then click “next” again.
 
 **Step 10**
 
-Input the new password of Raspberry Pi and click “Next”.
+Input the new password of Raspberry Pi and click \"Next\".
 
 .. image:: media/image59.png
    :alt: IMG_264
@@ -125,7 +125,7 @@ Input the new password of Raspberry Pi and click “Next”.
 
 **Step 11**
 
-Connect the Raspberry Pi to WIFI and click "Next".
+Connect the Raspberry Pi to WIFI and click \"Next\".
 
 .. image:: media/image60.png
    :alt: IMG_265
@@ -143,7 +143,7 @@ Retrieve update.
 
 **Step 13**
 
-Click "Done" to complete the Settings.
+Click \"Done\" to complete the Settings.
 
 .. image:: media/image62.png
    :alt: IMG_267

@@ -109,6 +109,32 @@ The schematic diagram of the module is as shown below:
 
     sudo ./a.out
 
+**Code**
+
+.. code-block:: c
+
+    #include <stdio.h>
+    #include <wiringPi.h>
+    #include <pcf8591.h>
+
+    #define PCF       120
+
+    int main (void)
+    {
+        int value ;
+        wiringPiSetup () ;
+        // Setup pcf8591 on base pin 120, and address 0x48
+        pcf8591Setup (PCF, 0x48) ;
+        while(1) // loop forever
+        {
+            value = analogRead  (PCF + 0) ;
+            printf("Value: %d\n", value);
+            analogWrite (PCF + 0, value) ;
+            delay (200) ;
+        }
+        return 0 ;
+    }
+
 **For Python Users:**
 
 **Step 2:** Change directory.
@@ -122,6 +148,39 @@ The schematic diagram of the module is as shown below:
 .. code-block::
 
     sudo python3 16_potentiometer.py
+
+**Code**
+
+.. code-block:: python
+
+    #!/usr/bin/env python3
+    import PCF8591 as ADC
+    import time
+
+    def setup():
+        ADC.setup(0x48)
+
+    def loop():
+        status = 1
+        while True:
+            print ('Value:', ADC.read(0))
+            Value = ADC.read(0)
+            outvalue = map(Value,0,255,120,255)
+            ADC.write(outvalue)
+            time.sleep(0.2)
+    def destroy():
+        ADC.write(0)
+
+    def map(x, in_min, in_max, out_min, out_max):
+            '''To map the value from arange to another'''
+            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+
+    if __name__ == '__main__':
+        try:
+            setup()
+            loop()
+        except KeyboardInterrupt: 
+            destroy()
 
 Turn the knob of the potentiometer, and you can see the value printed on
 the screen change from 0 (minimum) to 255 (maximum).
