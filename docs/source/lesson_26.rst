@@ -61,6 +61,10 @@ is as shown below:
 
 **Step 2:** Upgrade your kernel.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt-get update
@@ -68,11 +72,19 @@ is as shown below:
 
 **Step 3:** You can edit that file with nano.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo nano /boot/config.txt
 
 Then scroll to the bottom and type.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -80,12 +92,20 @@ Then scroll to the bottom and type.
 
 Then reboot with
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo reboot
 
 Mount the device drivers and confirm whether the device is effective or
 not.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -105,6 +125,10 @@ The result is as follows:
 vary with every client. This is the serial number of your ds18b20.
 
 **Step 4:** Check the current temperature.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -135,6 +159,10 @@ current temperature is 26187/1000=26.187 ℃.
 
 **Step 2:** Change directory and edit.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/26_ds18b20/
@@ -149,15 +177,27 @@ sensor address. Save and exit.
 
 **Step 6:** Compile.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     gcc ds18b20.c -lwiringPi
 
 **Step 7:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -242,6 +282,10 @@ sensor address. Save and exit.
 
 **Step 5:** Change directory and edit.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
@@ -249,11 +293,19 @@ sensor address. Save and exit.
 
 **Step 6:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 26_ds18b20.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

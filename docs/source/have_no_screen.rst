@@ -334,6 +334,10 @@ disabled. You need to enable it in config.
 
 Input the following command:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo raspi-config
@@ -427,6 +431,10 @@ Login to Raspberry Pi by using SSH.
 **Step 2**
 
 Input the following instructions to install XRDP.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 

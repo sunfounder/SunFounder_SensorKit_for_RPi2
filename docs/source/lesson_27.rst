@@ -76,11 +76,19 @@ left or right as long as you know the state of output 2.
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/27_rotary_encoder/
 
 **Step 3:** Compile.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -88,9 +96,17 @@ left or right as long as you know the state of output 2.
 
 **Step 4:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -172,17 +188,29 @@ left or right as long as you know the state of output 2.
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 3:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 27_rotary_encoder.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

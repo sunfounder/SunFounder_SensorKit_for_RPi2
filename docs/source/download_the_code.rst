@@ -3,6 +3,10 @@ Download the Code
 
 Change directory to */home/pi*
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/
@@ -14,7 +18,12 @@ Change directory to */home/pi*
 
 Clone the repository from github (C code and python code)
 
-.. note::
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
     git clone https://github.com/sunfounder/SunFounder_SensorKit_for_RPi2
 
 The advantage of this method is that, you can download the latest code

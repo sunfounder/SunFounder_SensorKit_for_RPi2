@@ -72,11 +72,19 @@ this change. The schematic diagram:
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/12_photo_interrupter/
 
 **Step 3:** Compile.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -84,9 +92,17 @@ this change. The schematic diagram:
 
 **Step 4:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -139,6 +155,7 @@ this change. The schematic diagram:
 
             LED(temp);
             Print(temp);
+            delay(100);
         }
         return 0;
     }
@@ -147,17 +164,29 @@ this change. The schematic diagram:
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 3:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 12_photo_interrupter.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

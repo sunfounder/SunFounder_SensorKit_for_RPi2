@@ -72,11 +72,19 @@ output steady signals. The schematic diagram:
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/24_touch_switch/
 
 **Step 3:** Compile.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -84,9 +92,17 @@ output steady signals. The schematic diagram:
 
 **Step 4:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -149,17 +165,29 @@ output steady signals. The schematic diagram:
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 3:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 24_touch_switch.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

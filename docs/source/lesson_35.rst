@@ -111,6 +111,10 @@ joystick, the system will log out.
 
 **Step 2**: Check the address of your sensor.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     ls /sys/bus/w1/devices/
@@ -124,6 +128,10 @@ It may be like this:
 Copy or write down 28-XXXXXXX. It is the address of your sensor.
 
 Step 2: Change directory and edit.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -156,15 +164,27 @@ Save and exit.
 
 **Step 4:** Compile.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     gcc temp_monitor.c -lwiringPi
 
 **Step 5:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -401,17 +421,29 @@ Save and exit.
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 4**: Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 35_temp_monitor.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

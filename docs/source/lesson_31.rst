@@ -63,11 +63,19 @@ step.)
 
 **Step 3:** Download libi2c-dev.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
     
 	sudo apt-get install libi2c-dev
 
 **Step 4:** Change directory.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
     
@@ -75,15 +83,27 @@ step.)
 
 **Step 5:** Compile.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     gcc barometer.c bmp180.c -lm -lwiringPi -lwiringPiDev
 
 **Step 6:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -116,12 +136,20 @@ step.)
 
 **Step 3:** Install smbus for I2C.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt-get install python3-smbus i2c-tools
 
 **Step 4:** We'll need to install some utilities for the Raspberry Pi to
 communicate over I2C.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -131,17 +159,29 @@ communicate over I2C.
 
 **Step 5:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 6:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 31_barometer.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

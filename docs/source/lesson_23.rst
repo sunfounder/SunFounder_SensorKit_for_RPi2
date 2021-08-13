@@ -72,6 +72,10 @@ represents the brightness.
 
 **Step 2:** Upgrade.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo su -c "grep '^deb ' /etc/apt/sources.list | sed 's/^deb/deb-src/g' > /etc/apt/sources.list.d/deb-src.list"
@@ -80,6 +84,10 @@ represents the brightness.
 
 **Step 3:** **Installing with a patch for gpio-ir in Raspbian Buster or
 higher version.**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -95,6 +103,10 @@ higher version.**
     sudo apt install ./liblirc0_0.10.1-5.2_armhf.deb ./liblircclient0_0.10.1-5.2_armhf.deb ./lirc_0.10.1-5.2_armhf.deb
 
 **Installing with a patch for gpio-ir in Raspbian Stretch:**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -119,11 +131,19 @@ command again. Then the install will success.
 
 Open your */boot/config.txt* file:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo nano /boot/config.txt
 
 Add this to the file:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -137,6 +157,10 @@ Press Ctrl +O and Ctrl +X, save and exit .
 **Step 5:** When you are using Raspbian Buster, first, please execute
 the following command.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo mv /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
@@ -145,6 +169,10 @@ the following command.
 **Step 6:** edit /etc/lirc/lirc_options.conf.
 
 Open the /etc/lirc/lirc_options.conf
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -159,11 +187,19 @@ Modify the file as below:
 
 **Step** 7: Run install command again.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt install ./liblirc0_0.10.1-5.2_armhf.deb ./liblircclient0_0.10.1-5.2_armhf.deb ./lirc_0.10.1-5.2_armhf.deb
 
 **Step 8:** Copy the configuration file to/home/pi and /etc/lirc:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -173,6 +209,10 @@ Modify the file as below:
 
 **Step 9:** Reboot the Raspberry Pi after the change.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo reboot
@@ -180,6 +220,10 @@ Modify the file as below:
 **Step 10:** Test the IR receiver.
 
 Check if lirc module is loaded:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -193,6 +237,10 @@ You should see this:
 
 **Step 11:** Run the command to start outputting raw data from the IR
 receiver:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -237,11 +285,19 @@ again that you’ve connected everything and haven’t crossed any wires.
 
 **Step 5:** Download LIRC client library:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt-get install liblircclient-dev
 
 **Step 6:** Change directory.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -249,11 +305,19 @@ again that you’ve connected everything and haven’t crossed any wires.
 
 **Step 7:** Copy the *lircrc* file to */etc/lirc/lirc/*:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo cp lircrc /etc/lirc/
 
 **Step 8:** Compile.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -261,9 +325,17 @@ again that you’ve connected everything and haven’t crossed any wires.
 
 **Step 9:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -395,12 +467,20 @@ steps.
 
 Install Pylirc dependencies:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt-get install python3-dev
     sudo apt-get install liblircclient-dev
 
 Install Pylirc:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -410,12 +490,20 @@ Install Pylirc:
 
 **Step 6:** Replace file pylircmodule.c:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     rm pylircmodule.c
     wget https://raw.githubusercontent.com/project-owner/Peppy.doc/master/files/pylircmodule.c
 
 **Step 7:** Install Pylirc (assuming that Python 3.7 is in use):
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -424,17 +512,29 @@ Install Pylirc:
 
 **Step 8:** Change directory:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 9:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 23_ircontrol.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

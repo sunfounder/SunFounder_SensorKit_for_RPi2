@@ -56,11 +56,19 @@ this step.)
 
 **Step 3:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/30_i2c_lcd1602/
 
 **Step 4:** Compile.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -68,9 +76,17 @@ this step.)
 
 **Step 5:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -180,17 +196,29 @@ this step.)
 
 **Step 3:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 4:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 30_i2c_lcd1602.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 

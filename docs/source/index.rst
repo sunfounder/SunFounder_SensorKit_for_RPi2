@@ -17,7 +17,7 @@ For NON-TECH questions like order and shipment issues, please send an email to s
 **Content**
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    components
    what_we_need
@@ -61,6 +61,7 @@ For NON-TECH questions like order and shipment issues, please send an email to s
    lesson_34
    lesson_35
    appendix
+   faq
 
 Copyright Notice
 --------------------------

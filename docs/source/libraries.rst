@@ -1,11 +1,11 @@
 Libraries
-=========
+===========
 
 Two important libraries are used in programming with Raspberry Pi, and
 they are wiringPi and RPi.GPIO. The Raspberry Pi OS image of Raspberry
 Pi installs them by default, so you can use them directly.
 
-**RPi.GPIO**
+RPi.GPIO
 ------------
 
 If you are a Python user, you can program GPIOs with API provided by
@@ -18,6 +18,10 @@ http://sourceforge.net/p/raspberry-gpio-python/wiki/Home/
 
 Test whether RPi.GPIO is installed or not, type in python:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     python
@@ -28,6 +32,10 @@ Test whether RPi.GPIO is installed or not, type in python:
 In Python CLI, input \"import RPi.GPIO\", If no error prompts, it means
 RPi.GPIO is installed.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     import RPi.GPIO
@@ -37,6 +45,10 @@ RPi.GPIO is installed.
 
 If you want to quit python CLI, type in:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     exit()
@@ -45,7 +57,7 @@ If you want to quit python CLI, type in:
    :width: 6.66667in
    :height: 0.375in
 
-**WiringPi** 
+WiringPi 
 ------------
 
 wiringPi is a C language GPIO library applied to the Raspberry Pi
@@ -56,6 +68,10 @@ familiar with Arduino to use wiringPi more easily.
 wiringPi includes lots of GPIO commands which enable you to control all
 kinds of interfaces on Raspberry Pi. You can test whether the wiringPi
 library is installed successfully or not by the following instructions.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -82,7 +98,12 @@ library is installed successfully or not by the following instructions.
     .. code-block::
 	
         gpio -v
-        and make sure it’s version 2.52.
+
+    and make sure it’s version 2.52.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 

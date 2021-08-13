@@ -60,11 +60,19 @@ as shown below:
 
 **Step 2**: Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/34_tracking/
 
 **Step 3**: Compile.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -72,9 +80,17 @@ as shown below:
 
 **Step 4**: Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -116,11 +132,19 @@ as shown below:
 
 **Step 2**: Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 3**: Run.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -128,10 +152,15 @@ as shown below:
 
 **Code**
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block:: python
 
     #!/usr/bin/env python3
     import RPi.GPIO as GPIO
+    import time
 
     TrackPin = 11
     LedPin   = 12
@@ -146,9 +175,11 @@ as shown below:
         while True:
             if GPIO.input(TrackPin) == GPIO.LOW:
                 print ('White line is detected')
+                time.sleep(0.5)
                 GPIO.output(LedPin, GPIO.LOW)  # led on
             else:
                 print ('...Black line is detected')
+                time.sleep(0.5)
                 GPIO.output(LedPin, GPIO.HIGH) # led off
 
     def destroy():

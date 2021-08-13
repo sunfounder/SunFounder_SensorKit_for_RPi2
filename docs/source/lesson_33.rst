@@ -70,17 +70,29 @@ The schematic diagram of the module is as shown below:
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/33_ds1302/
 
 **Step 3:** Compile:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     gcc rtc_ds1302.c -lwiringPi -lwiringPiDev
 
 **Step 4:** Set up time by:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -94,9 +106,17 @@ Set weekday (0 as Sunday)
 
 **Step 5:** Run:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo ./a.out
+
+.. note::
+
+   If it does not work after running, please refer to :ref:`C code is not working?`
 
 **Code**
 
@@ -326,17 +346,29 @@ Set weekday (0 as Sunday)
 
 **Step 2:** Change directory.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
 **Step 3:** Run.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo python3 33_ds1302.py
 
 **Code**
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block:: python
 
