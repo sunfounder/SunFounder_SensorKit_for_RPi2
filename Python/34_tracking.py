@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import RPi.GPIO as GPIO
+import time
 
 TrackPin = 11
 LedPin   = 12
@@ -14,9 +15,11 @@ def loop():
 	while True:
 		if GPIO.input(TrackPin) == GPIO.LOW:
 			print ('White line is detected')
+			time.sleep(0.5)
 			GPIO.output(LedPin, GPIO.LOW)  # led on
 		else:
 			print ('...Black line is detected')
+			time.sleep(0.5)
 			GPIO.output(LedPin, GPIO.HIGH) # led off
 
 def destroy():

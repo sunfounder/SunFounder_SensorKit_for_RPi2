@@ -45,6 +45,7 @@ int main(void){
 
 		LED(temp);
 		Print(temp);
+		delay(100);
 	}
 	return 0;
 }
