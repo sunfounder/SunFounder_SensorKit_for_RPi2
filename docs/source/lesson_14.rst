@@ -8,7 +8,7 @@ detection board in the open air. When it is raining, the rain detection
 module will sense the raindrops and send signals to the Raspberry Pi.
 
 .. image:: media/9.png
-  :width: 600
+  :width: 500
 
 **Required Components**
 

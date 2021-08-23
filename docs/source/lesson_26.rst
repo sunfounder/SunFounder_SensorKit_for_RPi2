@@ -11,7 +11,7 @@ from conventional AD collection temperature sensors, it uses a 1-wire
 bus and can directly output temperature data.
 
 .. image:: media/image34.png
-  :width: 250
+  :width: 200
 
 **Required Components**
 
@@ -36,8 +36,7 @@ middle pin DQ to pull up the level. The schematic diagram of the module
 is as shown below:
 
 .. image:: media/image211.png
-   :width: 3.24931in
-   :height: 2.99722in
+   :width: 400
 
 **Experimental Procedures**
 
@@ -350,3 +349,4 @@ sensor address. Save and exit.
 Now, you can see the current temperature value displayed on the screen.
 
 .. image:: media/image213.jpeg
+    :width: 800

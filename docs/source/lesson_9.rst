@@ -10,9 +10,7 @@ plastic-packaged transistor in size and is suitable for all kinds of
 infrared remote control and infrared transmission.
 
 .. image:: media/image13.png
-   :alt: IR Receiver
-   :width: 1.57361in
-   :height: 1.3in
+   :width: 200
 
 **Required Components**
 
@@ -36,8 +34,7 @@ received.
 The schematic diagram of the module is as shown below:
 
 .. image:: media/image131.png
-   :width: 4.02986in
-   :height: 2.98819in
+   :width: 500
 
 **Experimental Procedures**
 

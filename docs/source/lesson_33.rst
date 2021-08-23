@@ -12,8 +12,7 @@ of days per month and days in leap year. You can determine to use a
 24-hour or 12-hour system by AM/PM selection.
 
 .. image:: media/image238.png
-   :width: 2.78194in
-   :height: 2.35417in
+   :width: 200
 
 **Required Components**
 

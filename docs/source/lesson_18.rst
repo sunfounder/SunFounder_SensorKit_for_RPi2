@@ -89,9 +89,7 @@ The schematic diagram for the thermistor module:
 +-----------------------+----------------------+----------------------+
 
 .. image:: media/image181.png
-   :alt: C:\Users\Daisy\Desktop\Fritzing(英语)\18_Thermistor_bb.png18_Thermistor_bb
-   :width: 6.07292in
-   :height: 6.25069in
+   :width: 600
 
 **For analog temperature sensor module：**
 
@@ -109,6 +107,7 @@ The schematic diagram for the thermistor module:
 +------------------------+---------------------+----------------------+
 
 .. image:: media/image182.png
+    :width: 800
 
 **For C Users:**
 
@@ -408,7 +407,9 @@ temperature drops down slowly, \"Better\" will be printed.
 The physical picture for analog temperature sensor:
 
 .. image:: media/image183.jpeg
+    :width: 600
 
 The physical picture for thermistor module:
 
 .. image:: media/image184.jpeg
+    :width: 600

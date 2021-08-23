@@ -7,7 +7,7 @@ Buzzers can be categorized as active and passive ones (See the following
 picture).
 
 .. image:: media/8.png
-  :width: 600
+  :width: 500
 
 **Required Components**
 
@@ -28,9 +28,7 @@ green circuit board is a passive buzzer, while the other with a black
 tape, instead of a board, is an active buzzer.
 
 .. image:: media/image136.png
-   :alt: E:\Sally's file\Done\Super kit for arduino&rpi\buzzer.png
-   :width: 4.77431in
-   :height: 1.71389in
+   :width: 500
 
 **Active buzzer Passive buzzer**
 
@@ -46,8 +44,7 @@ multiple built-in oscillating circuits.
 The schematic diagram of the module is as shown below:
 
 .. image:: media/image137.png
-   :width: 4.19861in
-   :height: 2.77708in
+   :width: 500
 
 **Experimental Procedures**
 

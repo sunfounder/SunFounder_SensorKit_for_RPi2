@@ -103,9 +103,7 @@ joystick, the system will log out.
 +----------------------+----------------------+------------------------+
 
 .. image:: media/image246.png
-   :alt: 35_Expand02_bb
-   :width: 6.87014in
-   :height: 6.68681in
+   :width: 600
 
 **For C Users:**
 

@@ -71,14 +71,12 @@ conductor to be measured.
 The schematic diagram of the analog Hall sensor module:
 
 .. image:: media/image171.png
-   :width: 4.08889in
-   :height: 2.66111in
+   :width: 400
 
 The schematic diagram of the Switch hall module:
 
 .. image:: media/image172.png
-   :width: 3.65903in
-   :height: 2.4625in
+   :width: 400
 
 **Experimental Procedures**
 
@@ -325,9 +323,7 @@ For **Analog Hall Switch**, take the following steps.
 +----------------------+-----------------------+-----------------------+
 
 .. image:: media/image175.png
-   :alt: C:\Users\Daisy\Desktop\Fritzing(英语)\17_Analog_Hall_Switch.svg_bb.png17_Analog_Hall_Switch.svg_bb
-   :width: 5.65208in
-   :height: 6.00139in
+   :width: 800
 
 **For C Users:**
 

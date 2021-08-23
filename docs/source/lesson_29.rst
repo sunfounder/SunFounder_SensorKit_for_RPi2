@@ -6,8 +6,7 @@ Lesson 29 IR Obstacle Avoidance Module
 An IR obstacle avoidance module (as shown below) is used in this Lesson.
 
 .. image:: media/image224.png
-   :width: 2.86319in
-   :height: 1.75694in
+   :width: 250
 
 **Required Components**
 

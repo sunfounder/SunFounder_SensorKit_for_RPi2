@@ -42,8 +42,7 @@ Dual-Color LED to pin AOUT of PCF8591 to observe the change of LED.
 The schematic diagram of the module is as shown below:
 
 .. image:: media/image165.png
-   :width: 3.72222in
-   :height: 3.30208in
+   :width: 450
 
 **Experimental Procedures**
 

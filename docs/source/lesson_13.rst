@@ -17,8 +17,7 @@ digital-to-analog conversion. The maximum conversion rate is given by
 the maximum speed of the I2C-bus.
 
 .. image:: media/image149.png
-   :width: 1.78958in
-   :height: 1.5375in
+   :width: 200
 
 **Required Components**
 
@@ -73,8 +72,7 @@ change the luminance of the LED.
 The schematic diagram:
 
 .. image:: media/image152.png
-   :width: 6.73194in
-   :height: 3.03125in
+   :width: 800
 
 **Experimental Procedures**
 
@@ -233,6 +231,4 @@ luminance of the LED change and a value between 0 and 255 printed on the
 screen.
 
 .. image:: media/image154.jpeg
-   :alt: \_MG_2432
-   :width: 6.51736in
-   :height: 4.69792in
+   :width: 800
