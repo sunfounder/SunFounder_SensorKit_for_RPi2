@@ -233,4 +233,3 @@ The schematic diagram of the module is as shown below:
 You can see the dual-color LED render green, red, and mixed colors.
 
 .. image:: media/image99.jpeg
-   :width: 700

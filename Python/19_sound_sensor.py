@@ -15,7 +15,7 @@ def loop():
 		if voiceValue:
 			print ("Value:", voiceValue)
 			if voiceValue < 50:
-				print ("Voice detected! ", count)
+				print ("Voice In!! ", count)
 				count += 1
 			time.sleep(0.2)
 

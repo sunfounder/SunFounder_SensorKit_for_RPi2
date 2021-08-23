@@ -57,4 +57,3 @@ Build the circuit.
 Now, you will see 7-color auto-flash LED flashing seven colors.
 
 .. image:: media/image109.jpeg
-   :width: 700

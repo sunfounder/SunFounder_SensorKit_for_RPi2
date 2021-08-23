@@ -12,8 +12,7 @@ out. This is our 40-pin GPIO Extension Board and GPIO cable for
 Raspberry Pi model B+, 2 model B and 3, 4 model B.
 
 .. image:: media/image88.png
-   :width: 6.83889in
-   :height: 3.04583in
+  :align: center
 
 **Pin Number**
 
@@ -34,4 +33,4 @@ Raspberry Pi model B+, 2 model B and 3, 4 model B.
   2）In Python Language, the applied naming methods are Board and BCM, and the function GPIO.setmode() is used to set them.
 
 .. image:: media/4.png
-  :width: 600
+  :align: center

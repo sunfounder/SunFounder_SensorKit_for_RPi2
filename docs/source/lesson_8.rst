@@ -244,6 +244,3 @@ red. Tap the sensor again, and the LED will change to green. Each tap or
 knock would make it change between red and green.
 
 .. image:: media/image130.jpeg
-   :alt: \_MG_2224
-   :width: 6.10556in
-   :height: 4.52083in

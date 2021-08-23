@@ -13,7 +13,7 @@ and go into the next chapter.
 .. toctree::
    :maxdepth: 2
 
-   have_a_screen
-   have_no_screen
+   what_we_need
+   set_up_your_raspberry_pi
 
 

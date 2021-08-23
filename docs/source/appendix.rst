@@ -5,6 +5,10 @@ Appendix: I2C Configuration
 enabled it, skip this; if you do not know whether you have done that or
 not, please continue):
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo raspi-config
@@ -12,41 +16,41 @@ not, please continue):
 **5 Interfacing options**
 
 .. image:: media/image248.png
-   :width: 6.03333in
-   :height: 3.36806in
 
 **P5 I2C**
 
 .. image:: media/image249.png
-   :width: 6.05069in
-   :height: 3.51528in
 
 **<Yes>**
 
 .. image:: media/image250.png
-   :width: 600
+
 
 **<Yes>**
 
 .. image:: media/image251.png
-   :width: 600
+
 
 **<Ok>**
 
 .. image:: media/image252.png
-   :width: 600
+
 
 **<Finish>**
 
 .. image:: media/image253.png
-   :width: 600
+
 
 **<Yes>** (If you do not see this page, continue to the next step)
 
 .. image:: media/image254.png
-   :width: 600
+
 
 **Step 2:** Check that the i2c modules are loaded and active:
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 
@@ -61,16 +65,26 @@ Then the following code will appear (the number may be different).
 
 **Step 3**: Install i2c-tools.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt-get install i2c-tools
 
 **Step 4**: Check the address of the I2C device:
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     i2cdetect -y 1   # For Raspberry Pi 2 and higher version
     i2cdetect -y 0   # For Raspberry Pi 1
+
+.. code-block::
 
     pi@raspberrypi ~ $ i2cdetect -y 1
 
@@ -99,11 +113,19 @@ above – since the address of the device is 0x48, 48 is printed.
 
 **For C language users:** Install libi2c-dev.
 
+.. raw:: html
+
+    <run></run>
+
 .. code-block::
 
     sudo apt-get install libi2c-dev
 
 **For Python users:** Install smbus for I2C.
+
+.. raw:: html
+
+    <run></run>
 
 .. code-block::
 

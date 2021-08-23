@@ -13,14 +13,14 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+
+
+# -- Project information -----------------------------------------------------
 import sphinx_rtd_theme
 
-html_theme = 'sphinx_rtd_theme'
-# -- Project information -----------------------------------------------------
-
-project = 'Sensor kit v2 for pi'
-copyright = '2021, sunfounder'
-author = 'sunfounder'
+project = 'SunFounder SunFounder_SensorKit_for_RPi2'
+copyright = '2021, SunFounder'
+author = 'www.sunfounder.com'
 
 
 # -- General configuration ---------------------------------------------------
@@ -28,7 +28,8 @@ author = 'sunfounder'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autosectionlabel']
+extensions = ['sphinx.ext.autosectionlabel'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -48,10 +49,16 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# SunFounder logo
+
+# html_js_files = [
+#     'https://ezblock.cc/readDocFile/topHead.js',
+# ]
+# html_css_files = [
+#     'https://ezblock.cc/readDocFile/topHead.css',
+# ]
+
+#### RTD+
 
 html_js_files = [
     'https://ezblock.cc/readDocFile/topHead.js',
@@ -64,6 +71,7 @@ html_js_files = [
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/xterm.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/FitAddon.js',
     'https://ezblock.cc/readDocFile/readTheDoc/src/js/readTheDocIndex.js',
+
 ]
 html_css_files = [
     'https://ezblock.cc/readDocFile/topHead.css',
@@ -71,9 +79,11 @@ html_css_files = [
     'https://ezblock.cc/readDocFile/readTheDoc/src/css/xterm.css',
 ]
 
-html_static_path = ['_static']
 
-language = 'en'
-locale_dirs = ['locale/'] 
 
-gettext_compact = False
+# Multi-language
+
+language = 'en' # Before running make html, set the language.
+locale_dirs = ['locale/'] # .po files for other languages are placed in the locale/ folder.
+
+gettext_compact = False # Support for generating the contents of the folders inside source/ into other languages.

@@ -194,4 +194,3 @@ Now you can see the module send out Morse signals.
     spot flashing on the table.
 
 .. image:: media/5.png
-  :width: 700

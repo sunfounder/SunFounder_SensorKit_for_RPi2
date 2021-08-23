@@ -1,7 +1,7 @@
 What We Need?
 =============
 
-**Required Components**
+Required Components
 -----------------------
 
 **Raspberry Pi**
@@ -32,7 +32,7 @@ Your Raspberry Pi needs an SD card to store all its files and the
 Raspberry Pi OS. You will need a micro SD card with a capacity of at
 least 8 GB.
 
-**Optional Components**
+Optional Components
 -------------------------
 
 **Screen**

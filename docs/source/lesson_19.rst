@@ -191,7 +191,7 @@ The schematic diagram of the module is as shown below:
             if voiceValue:
                 print ("Value:", voiceValue)
                 if voiceValue < 50:
-                    print ("Voice detected! ", count)
+                    print ("Voice In!! ", count)
                     count += 1
                 time.sleep(0.2)
 
@@ -202,7 +202,7 @@ The schematic diagram of the module is as shown below:
         except KeyboardInterrupt: 
             pass	
 
-Now, speak close to or blow to the microphone, and you can see “Voice
-In!! \***” printed on the screen.
+Now, speak close to or blow to the microphone, and you can see \"Voice
+In!!\" printed on the screen.
 
 .. image:: media/image188.jpeg

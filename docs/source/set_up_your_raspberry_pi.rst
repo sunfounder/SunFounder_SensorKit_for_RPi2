@@ -1,4 +1,171 @@
-**If You Have No Screen**
+Set up Your Raspberry Pi
+============================
+
+If You Have a Screen
+------------------------
+
+If you have a screen, you can use the NOOBS (New Out Of Box System) to
+install the Raspberry Pi OS.
+
+.. _required-components-1:
+
+Required Components
+~~~~~~~~~~~~~~~~~~~~~~~
+
++-----------------------------------+----------------------------------+
+| Any Raspberry Pi                  | 1 \* Power Adapter               |
++-----------------------------------+----------------------------------+
+| 1 \* Monitor                      | 1 \* Monitor Power Adapter       |
++-----------------------------------+----------------------------------+
+| 1 \* HDMI cable                   | 1 \* Mirco SD card               |
++-----------------------------------+----------------------------------+
+| 1 \* Mouse                        | 1 \* Keyboard                    |
++-----------------------------------+----------------------------------+
+| 1 \* Personal Computer            |                                  |
++-----------------------------------+----------------------------------+
+
+Procedures
+~~~~~~~~~~~~~~
+
+**Step 1**
+
+To download NOOBS from your PC, you can choose **NOOBS** or **NOOBS LITE
+-** the only difference is that there is a built-in offline Raspberry Pi
+OS installer in **NOOBS**, while the **NOOBS LITE** can only be operated
+online. Here, you are suggested to use the former.
+
+Here is the download address of Noobs:
+https://www.raspberrypi.org/downloads/noobs/
+
+.. image:: media/image53.png
+   :align: center
+
+**Step 2**
+
+Plug in the Micro SD reader and format the Micro SD card with the SD
+Formatter (https://www.sdcard.org/downloads/formatter/index.html). If
+there are some important files in the Micro SD card, please backup them
+first.
+
+**Step 3**
+
+Next, you will need to extract the files from the NOOBS zip archive you
+downloaded from the Raspberry Pi website.
+
+-  Find the downloaded archive — by default, it should be in your
+   Downloads folder.
+
+-  Double-click on it to extract the files, and keep the resulting
+   Explorer/Finder window open.
+
+Finally Select all the files in the NOOBS folder and copy them to the SD
+card.
+
+.. image:: media/image54.png
+   :align: center
+   :alt: IMG_257
+   :align: cente
+
+**Step 4**
+
+All the files transferred, the SD card pops up.
+
+**Step 5**
+
+Insert the SD card into the Raspberry Pi. In addition, connect the
+screen, and mouse to it. Finally power up the Raspberry Pi with a power
+adapter.
+
+**Step 6**
+
+It will go to the NOOBS interface after starting up. If you use NOOBS
+LITE, you need to select Wi-Fi networks (w) first. Tick the checkbox of
+the Raspbian and click Install in the top left corner. The NOOBS will
+help to conduct the installation automatically. This process will take a
+few minutes.
+
+.. image:: media/image55.png
+   :align: center
+   
+**Step 7**
+
+When the installation is done, the system will restart automatically and
+the desktop of the system will appear.
+
+.. image:: media/image56.png
+   :align: center
+   :alt: IMG_261
+
+**Step 8**
+
+If you run Raspberry Pi for the first time, the application of \"Welcome
+to Raspberry Pi\"  pops up and guides you to perform the initial setup.
+
+.. image:: media/image57.png
+   :align: center
+   :alt: IMG_262
+
+**Step 9**
+
+Set country/region, language and time zone, and then click \"next\" again.
+
+.. image:: media/image58.png
+   :align: center
+   :alt: IMG_263
+
+**Step 10**
+
+Input the new password of Raspberry Pi and click \"Next\".
+
+.. image:: media/image59.png
+   :align: center
+   :alt: IMG_264
+
+**Step 11**
+
+Connect the Raspberry Pi to WIFI and click \"Next\".
+
+.. image:: media/image60.png
+   :align: center
+   :alt: IMG_265
+
+**Step 12**
+
+Retrieve update.
+
+.. image:: media/image61.png
+   :align: center
+   :alt: IMG_266
+
+**Step 13**
+
+Click \"Done\" to complete the Settings.
+
+.. image:: media/image62.png
+   :align: center
+   :alt: IMG_267
+
+**Step 14**
+
+Click the Terminal icon on the top left corner.
+
+.. image:: media/image56.png
+   :align: center
+   :alt: IMG_261
+
+**Step 15**
+
+Then you can input the commands on the Terminal.
+
+.. image:: media/image63.png
+   :align: center
+   :alt: lALPBGnDW-QqtbTNAyDNAeA_480_800
+
+.. note::
+    You can check the complete tutorial of NOOBS on the official website of the Raspberry Pi: https://www.raspberrypi.org/help/noobs-setup/.
+
+
+If You Have No Screen
 -------------------------
 
 If we don't have a screen, we can directly write the Raspberry Pi OS
@@ -49,14 +216,14 @@ SD card.
    Raspberry Pi OS Full (32-bit)**.
 
 .. image:: media/2.png
-   :width: 600
+   :align: center
    
 .. image:: media/3.png
-   :width: 600
+   :align: center
+   
+1) Choose the SD card you wish to write your image to.
 
-4) Choose the SD card you wish to write your image to.
-
-5) Review your selections and click 'WRITE' to begin writing data to the
+2) Review your selections and click 'WRITE' to begin writing data to the
    SD card.
 
 .. note::
@@ -93,9 +260,8 @@ file inside.
 burn the **.img** file with the Etcher.
 
 .. image:: media/image66.png
+   :align: center
    :alt: IMG_269
-   :width: 6.52153in
-   :height: 3.34861in
 
 At this point, Raspberry Pi OS is installed. **Keep the USB card reader
 plug in your computer**. If you want to apply it, next you need to
@@ -114,9 +280,10 @@ Raspberry Pi, a USB WIFI Adapter is needed. Log in the website,
 https://elinux.org/RPi_USB_Wi-Fi_Adapters for more.
 
 .. image:: media/image67.jpeg
-   :alt: IMG_270
-   :width: 3.98056in
-   :height: 2.21736in
+   :align: center
+   :alt: IMG_270   
+   :width: 400
+
 
 If you want to use the WIFI function, you need to modify a WIFI
 configuration file wpa_supplicant.conf in the SD card by your PC that is
@@ -129,8 +296,8 @@ you need next is to go to the directory, */boot/*  to create a new file
 with the same name, **wpa_supplicant.conf**.
 
 .. image:: media/image68.jpeg
-   :width: 250
-
+   :align: center
+   
 Input the following content in the file.
 
 .. code-block::
@@ -172,9 +339,8 @@ Raspberry Pi is in a disabled state. Additionally, if you want to run
 it, you need to create a file named SSH under directory /boot/.
 
 .. image:: media/image69.png
+   :align: center
    :alt: IMG_272
-   :width: 4.47917in
-   :height: 1.22917in
 
 Now, the Raspberry Pi OS is configured. When the SD card is inserted
 into the Raspberry Pi, you can use it immediately.
@@ -222,9 +388,8 @@ Go to **Applications**->\ **Utilities**, find the **Terminal**, and open
 it.
 
 .. image:: media/image70.png
+   :align: center
    :alt: IMG_274
-   :width: 5.58472in
-   :height: 3.25208in
 
 **Step 2**
 
@@ -240,24 +405,23 @@ your IP address. For example:
 Input \"yes\".
 
 .. image:: media/image71.png
-   :width: 600
-
+   :align: center
+   
 **Step 4**
 
 Input the passcode and the default password is **raspberry**.
 
 .. image:: media/image72.png
-   :width: 600
-
+   :align: center
+   
 **Step 5**
 
 We now get the Raspberry Pi connected and are ready to go to the next
 step.
 
 .. image:: media/image73.png
+   :align: center
    :alt: IMG_277
-   :width: 5.74514in
-   :height: 4.37153in
 
 .. note:: 
     When you input the password, the characters do not display on
@@ -281,9 +445,8 @@ the IP address of the RPi in the text box under **Host Name (or IP
 address)** and 22 under **Port** (by default it is 22).
 
 .. image:: media/image74.png
+   :align: center
    :alt: IMG_278
-   :width: 6.3125in
-   :height: 5.59375in
 
 **Step 3**
 
@@ -297,9 +460,8 @@ When the PuTTY window prompts \"**login as:**\", type in
 (the default one, if you haven't changed it).
 
 .. image:: media/image75.png
+   :align: center
    :alt: IMG_279
-   :width: 6.67708in
-   :height: 4.42708in
 
 **Step 5**
 
@@ -348,23 +510,22 @@ On the config interface, select \"**Interfacing Options**\" by the
 forward and backward keys.
 
 .. image:: media/image76.png
-   :width: 600
-
+   :align: center
+   
 **Step 3**
 
 Select **VNC**.
 
 .. image:: media/image77.png
-   :width: 600
-
+   :align: center
+   
 **Step 4**
 
 Select **Yes -> OK -> Finish** to exit the configuration.
 
 .. image:: media/image78.png
+   :align: center
    :alt: IMG_283
-   :width: 5.03125in
-   :height: 3.34583in
 
 **Login to VNC**
 
@@ -377,45 +538,41 @@ installation is done, open it.
 
 Then select \"**New connection**\".
 
-   .. image:: media/image79.png
-      :alt: IMG_285
-      :width: 3.67708in
-      :height: 1.66667in
+.. image:: media/image79.png
+   :align: center
+   :alt: IMG_285
 
 **Step 3**
 
 Input IP address of Raspberry Pi and any **name**.
 
 .. image:: media/image80.png
+   :align: center
    :alt: IMG_286
-   :width: 4.02569in
-   :height: 4.52153in
 
 **Step 4**
 
 Double click the **connection** just created:
 
 .. image:: media/image81.png
+   :align: center
    :alt: IMG_287
-   :width: 4.57292in
-   :height: 2.98958in
 
 **Step 5**
 
 Enter Username (**pi**) and Password (**raspberry** by default).
 
 .. image:: media/image82.png
+   :align: center
    :alt: IMG_288
-   :width: 5.20833in
-   :height: 3.75in
 
 **Step 6**
 
 Now you can see the desktop of the Raspberry Pi:
 
 .. image:: media/image83.png
-   :width: 500
-
+   :align: center
+   
 **XRDP**
 ^^^^^^^^
 
@@ -448,8 +605,8 @@ Later, the installation starts.
 Enter \"Y\", press key \"Enter\" to confirm.
 
 .. image:: media/image84.png
-   :width: 600
-
+   :align: center
+   
 **Step 4**
 
 After the installation is completed, you can use Windows remote desktop
@@ -470,7 +627,8 @@ Type in \"mstsc\" in Run (WIN+R) to open the Remote Desktop Connection, and
 input the IP address of Raspberry Pi, then click on \"Connect\".
 
 .. image:: media/image85.png
-   :width: 700
+   :align: center
+   
 
 **Step 3**
 
@@ -479,13 +637,14 @@ and click OK. By default, the user name of Raspberry Pi is \"**pi**\" and
 the password is \"**raspberry**\".
 
 .. image:: media/image86.png
+   :align: center
    :alt: IMG_292
-   :width: 3.55in
-   :height: 4.26181in
+
 
 **Step 4**
 
 Here, you successfully login to RPi by using the remote desktop.
 
 .. image:: media/image87.png
-   :width: 600
+   :align: center
+   

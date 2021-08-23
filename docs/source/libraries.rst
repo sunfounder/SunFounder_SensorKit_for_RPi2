@@ -27,7 +27,8 @@ Test whether RPi.GPIO is installed or not, type in python:
     python
 
 .. image:: media/image89.png
-   :width: 800
+    :align: center
+    :width: 800
 
 In Python CLI, input \"import RPi.GPIO\", If no error prompts, it means
 RPi.GPIO is installed.
@@ -41,7 +42,8 @@ RPi.GPIO is installed.
     import RPi.GPIO
 
 .. image:: media/image90.png
-   :width: 800
+    :align: center
+    :width: 800
 
 If you want to quit python CLI, type in:
 
@@ -54,8 +56,7 @@ If you want to quit python CLI, type in:
     exit()
 
 .. image:: media/image91.png
-   :width: 6.66667in
-   :height: 0.375in
+    :align: center
 
 WiringPi 
 ------------
@@ -78,8 +79,6 @@ library is installed successfully or not by the following instructions.
     gpio -v
 
 .. image:: media/image92.png
-   :width: 5.29167in
-   :height: 1.84375in
 
 .. note::
     If you are using Raspberry Pi 4B, but the GPIO version is **2.50**, it
@@ -110,8 +109,8 @@ library is installed successfully or not by the following instructions.
     gpio readall
 
 .. image:: media/image93.png
-   :alt: 图片2
-   :width: 600
+    :align: center
+    :alt: 图片2
 
 For more details about wiringPi, you can refer to:
 http://wiringpi.com/download-and-install/

@@ -302,4 +302,3 @@ The schematic diagram of the module is as shown below:
 You will see the RGB LED light up, and display different colors in turn.
 
 .. image:: media/image105.jpeg
-   :width: 700

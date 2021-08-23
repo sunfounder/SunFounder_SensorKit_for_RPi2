@@ -242,6 +242,3 @@ voltage device you want to control, like a 220V bulb, to the output port
 of the relay. Then the relay will act as an automatic switch.
 
 .. image:: media/image114.jpeg
-   :alt: \_MG_2206
-   :width: 6.37639in
-   :height: 4.13542in
