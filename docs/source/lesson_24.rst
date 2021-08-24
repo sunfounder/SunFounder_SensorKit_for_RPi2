@@ -8,8 +8,7 @@ touch the metal on the base electrode of the transistor, the level of
 pin SIG will turn over.
 
 .. image:: media/image204.png
-   :width: 1.44653in
-   :height: 1.2in
+   :width: 200
 
 **Required Components**
 
@@ -64,9 +63,7 @@ output steady signals. The schematic diagram:
 
 
 .. image:: media/image206.png
-  :alt: C:\Users\Daisy\Desktop\Fritzing(英语)\24_Touch_Switch_bb.png24_Touch_Switch_bb
-  :width: 6.31597in 
-  :height: 5.46875in
+  :width: 800
 
 **For C Users:**
 

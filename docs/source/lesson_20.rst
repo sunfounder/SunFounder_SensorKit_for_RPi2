@@ -34,8 +34,7 @@ these digital signals are transmitted to Raspberry Pi and printed on the
 screen. The schematic diagram:
 
 .. image:: media/image190.png
-   :width: 3.34931in
-   :height: 3.14306in
+   :width: 400
 
 **Experimental Procedures**
 

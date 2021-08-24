@@ -10,9 +10,7 @@ with the BMP085 but boasts many improvements, like a smaller size and
 more digital interfaces.
 
 .. image:: media/image231.jpeg
-   :alt: IMG_256
-   :width: 1.65903in
-   :height: 1.33819in
+   :width: 200
 
 **Required Components**
 
@@ -30,9 +28,7 @@ Use a barometer to measure air pressure and temperature. The schematic
 diagram of the module is as follows:
 
 .. image:: media/image232.png
-   :alt: IMG_256
-   :width: 4.94167in
-   :height: 3.58264in
+   :width: 450
 
 **Experimental Procedures**
 

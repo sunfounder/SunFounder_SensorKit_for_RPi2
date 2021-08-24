@@ -72,10 +72,8 @@ cut off, and the relay will recover to initial state.
 The schematic diagram of the module is as shown below:
 
 .. image:: media/image112.png
-   :alt: D:\树莓派\套件\Sensor Kit\Sensor Kit V2.0\图片\4\relayew.png
-   :width: 4.47986in
-   :height: 3.67569in
-
+   :width: 600
+   
 **Experimental Procedures**
 
 **Step 1:** Build the circuit.

@@ -10,7 +10,7 @@ interrupted when an object passes through the sensor. Therefore,
 photo-interrupters are widely used in speed measurement.
 
 .. image:: media/image17.png
-  :width: 250
+  :width: 200
 
 **Required Components**
 

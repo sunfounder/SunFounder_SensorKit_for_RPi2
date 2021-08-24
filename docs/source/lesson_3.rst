@@ -46,9 +46,7 @@ Build the circuit.
 +-----------------------+----------------------+----------------------+
 
 .. image:: media/image108.png
-   :alt: C:\Users\Daisy\Desktop\Fritzing(英语)\03_AutoFlashLED_bb.png03_AutoFlashLED_bb
-   :width: 5.17639in
-   :height: 4.40833in
+   :width: 600
 
 .. note::
 

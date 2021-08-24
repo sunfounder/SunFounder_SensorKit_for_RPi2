@@ -8,8 +8,7 @@ tilt-switch with a metal ball inside. It is used to detect inclinations
 of a small angle.
 
 .. image:: media/image123.png
-   :width: 1.54931in
-   :height: 1.33403in
+   :width: 200
 
 **Required Components**
 
@@ -34,9 +33,7 @@ light, otherwise it will break and the LED will emit green light.
 The schematic diagram of the module is as shown below:
 
 .. image:: media/image124.png
-   :alt: C:\Users\sunfounder\Desktop\123.png
-   :width: 3.94028in
-   :height: 2.91042in
+   :width: 450
 
 **Experimental Procedures**
 
