@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 SunFounder Sensor Kit V2 for Raspberry Pi
 ==========================================
 
@@ -10,18 +9,6 @@ This sensor kit is suitable for the Raspberry Pi model B+, 2 model B, 3 model B,
 If you want to learn another projects which we don’t have, please feel free to send Email and we will update to our online tutorials as soon as possible, any suggestions are welcomed.
 
 Here is the Email: cs@sunfounder.com.
-
-**Content**
-=======
-Preface
-==========
-
-**About Sensor Kit for RPi 2.0**
-
-This sensor kit is suitable for the Raspberry Pi model B+, 2 model B, 3 model B, 3 model B+ and 4 Model B. It includes dozens of different modules for you to learn and we provide corresponding lessons which are simple and useful for better understanding. Hope you can learn their applications quickly and use them in your own projects! 
-
-Here is the Email: cs@sunfounder.com.
->>>>>>> 967b5a5d62c357d0a4a4412f1cd39fe188d04a8c
 
 .. toctree::
    :maxdepth: 2

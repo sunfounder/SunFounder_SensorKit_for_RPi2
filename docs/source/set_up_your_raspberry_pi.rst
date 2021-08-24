@@ -64,7 +64,6 @@ card.
 .. image:: media/image54.png
    :align: center
    :alt: IMG_257
-   :align: cente
 
 **Step 4**
 
