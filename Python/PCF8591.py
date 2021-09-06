@@ -16,7 +16,7 @@
 #	ADC.write(Value)	# Value range from 0 to 255		
 #
 #------------------------------------------------------
-import smbus
+import smbus2 as smbus
 import time
 
 # for RPI version 1, use "bus = smbus.SMBus(0)"

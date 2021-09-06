@@ -208,7 +208,7 @@ step.)
 .. code-block:: python
 
     #!/usr/bin/python3
-    import smbus
+    import smbus2 as smbus
     import math
     import time
 

@@ -130,7 +130,7 @@ step.)
 
 **For Python Users:**
 
-**Step 3:** Install smbus for I2C.
+**Step 3:** Install smbus2 for I2C.
 
 .. raw:: html
 
@@ -138,7 +138,7 @@ step.)
 
 .. code-block::
 
-    sudo apt-get install python3-smbus i2c-tools
+    sudo pip3 install smbus2
 
 **Step 4:** We'll need to install some utilities for the Raspberry Pi to
 communicate over I2C.

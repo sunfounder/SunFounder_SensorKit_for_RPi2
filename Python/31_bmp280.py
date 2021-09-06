@@ -12,7 +12,7 @@
 #!/usr/bin/env python3
 import time
 import RPi.GPIO as GPIO
-import smbus
+import smbus2 as smbus
 class BMP280:
 	# this value is necessary to calculate the correct height above sealevel
 	# its also included in airport wheather information ATIS named as QNH

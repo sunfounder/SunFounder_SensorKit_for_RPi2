@@ -121,7 +121,7 @@ above – since the address of the device is 0x48, 48 is printed.
 
     sudo apt-get install libi2c-dev
 
-**For Python users:** Install smbus for I2C.
+**For Python users:** Install smbus2 for I2C.
 
 .. raw:: html
 
@@ -129,7 +129,7 @@ above – since the address of the device is 0x48, 48 is printed.
 
 .. code-block::
 
-    sudo apt-get install python3-smbus
+    sudo pip3 install smbus2
 
 **Copyright Notice**
 
