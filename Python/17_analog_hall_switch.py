@@ -31,7 +31,7 @@ def loop():
 	while True:
 		res = ADC.read(0)
 		print ('Current intensity of magnetic field : ', res)
-		if res - 133 < 5 and res - 133 > -5:
+		if res - 133 >= -5 and res - 133 <= 5:
 			tmp = 0
 		if res < 128:
 			tmp = -1
