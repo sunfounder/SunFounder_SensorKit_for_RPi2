@@ -67,14 +67,14 @@ int key(char *code){
 int RGB(int i){
 	switch(i){
 		case 1: color[0] = Lv[0]; printf("Red OFF\n"); break;
-		case 2: color[0] = Lv[1]; printf("Light Red\n"); break;
-		case 3: color[0] = Lv[2]; printf("Dark Red\n"); break;
+		case 2: color[0] = Lv[1]; printf("Dark Red\n"); break;
+		case 3: color[0] = Lv[2]; printf("Bright Red\n"); break;
 		case 4: color[1] = Lv[0]; printf("Green OFF\n"); break;
-		case 5: color[1] = Lv[1]; printf("Light Green\n"); break;
-		case 6: color[1] = Lv[2]; printf("Dark Green\n"); break;
+		case 5: color[1] = Lv[1]; printf("Dark Green\n"); break;
+		case 6: color[1] = Lv[2]; printf("Bright Green\n"); break;
 		case 7: color[2] = Lv[0]; printf("Blue OFF\n"); break;
-		case 8: color[2] = Lv[1]; printf("Light Blue\n"); break;
-		case 9: color[2] = Lv[2]; printf("Dark Green\n"); break;
+		case 8: color[2] = Lv[1]; printf("Dark Blue\n"); break;
+		case 9: color[2] = Lv[2]; printf("Bright Green\n"); break;
 	}
 }
 

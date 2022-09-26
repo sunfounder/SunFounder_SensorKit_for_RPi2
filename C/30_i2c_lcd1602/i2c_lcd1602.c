@@ -92,8 +92,12 @@ void write(int x, int y, char data[]){
 void main(){
 	fd = wiringPiI2CSetup(LCDAddr);
 	init();
-	write(0, 0, "Greetings!");
-	write(1, 1, "From SunFounder");
-	delay(2000);
-	clear();
+    while(1)
+    {	
+        write(0, 0, "Greetings!");
+        write(1, 1, "From SunFounder");
+        delay(2000);
+        clear();
+    }
+
 }
