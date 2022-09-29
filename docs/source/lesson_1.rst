@@ -85,6 +85,10 @@ The schematic diagram of the module is as shown below:
 
     gcc dule_color_led.c -lwiringPi -lpthread
 
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
 **Step 4:** Run.
 
 .. raw:: html
@@ -94,10 +98,6 @@ The schematic diagram of the module is as shown below:
 .. code-block::
 
     sudo ./a.out
-
-.. note::
-    
-    If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
 
 **Code**
 

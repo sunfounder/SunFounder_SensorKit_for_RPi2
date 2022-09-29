@@ -70,7 +70,7 @@ represents the brightness.
    :width: 4.68125in
    :height: 4.37986in
 
-**Step 2:** Upgrade.
+**Step 2:** Install the lirc:
 
 .. raw:: html
 
@@ -78,58 +78,12 @@ represents the brightness.
 
 .. code-block::
 
-    sudo su -c "grep '^deb ' /etc/apt/sources.list | sed 's/^deb/deb-src/g' > /etc/apt/sources.list.d/deb-src.list"
-    sudo apt update
-    sudo apt install devscripts
+    sudo apt-get update
+    sudo apt install lirc
 
-**Step 3:** **Installing with a patch for gpio-ir in Raspbian Buster or
-higher version.**
+**Step 3:** Set up lirc.
 
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo apt install dh-exec doxygen expect libasound2-dev libftdi1-dev libsystemd-dev libudev-dev libusb-1.0-0-dev libusb-dev man2html-base portaudio19-dev socat xsltproc python3-yaml dh-python libx11-dev python3-dev python3-setuptools
-    mkdir build
-    cd build
-    apt source lirc
-    wget https://raw.githubusercontent.com/neuralassembly/raspi/master/lirc-gpio-ir-0.10.patch
-    patch -p0 -i lirc-gpio-ir-0.10.patch
-    cd lirc-0.10.1
-    debuild -uc -us -b
-    cd ..
-    sudo apt install ./liblirc0_0.10.1-5.2_armhf.deb ./liblircclient0_0.10.1-5.2_armhf.deb ./lirc_0.10.1-5.2_armhf.deb
-
-**Installing with a patch for gpio-ir in Raspbian Stretch:**
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo apt build-dep lirc
-    mkdir build
-    cd build
-    apt source lirc
-    wget https://raw.githubusercontent.com/neuralassembly/raspi/master/lirc-gpio-ir.patch
-    patch -p0 -i lirc-gpio-ir.patch
-    cd lirc-0.9.4c
-    debuild -uc -us -b
-    cd ..
-    sudo apt install ./liblirc0_0.9.4c-9_armhf.deb ./liblirc-client0_0.9.4c-9_armhf.deb ./lirc_0.9.4c-9_armhf.deb
-
-If you encounter problems during the installation process, please try a
-few more times. The final install command will fail. Then please
-configure the files shown below first, i.e., /boot/config.txt and
-/etc/lirc/lirc_options.conf. After that, please try the final install
-command again. Then the install will success.
-
-**Step 4:** Set up lirc.
-
-Open your */boot/config.txt* file:
+Open your ``/boot/config.txt`` file:
 
 .. raw:: html
 
@@ -141,34 +95,18 @@ Open your */boot/config.txt* file:
 
 Add this to the file:
 
-.. raw:: html
-
-    <run></run>
 
 .. code-block::
 
-    # Uncomment this to enable the lirc-rpi module
-    #dtoverlay=lirc-rpi
+    # Uncomment this to enable the infrared communication
     dtoverlay=gpio-ir,gpio_pin=23
     dtoverlay=gpio-ir-tx,gpio_pin=22
 
 Press Ctrl +O and Ctrl +X, save and exit .
 
-**Step 5:** When you are using Raspbian Buster, first, please execute
-the following command.
+**Step 4:** edit ``/etc/lirc/lirc_options.conf``.
 
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo mv /etc/lirc/lirc_options.conf.dist /etc/lirc/lirc_options.conf
-    sudo mv /etc/lirc/lircd.conf.dist /etc/lirc/lircd.conf
-
-**Step 6:** edit /etc/lirc/lirc_options.conf.
-
-Open the /etc/lirc/lirc_options.conf
+Open the ``/etc/lirc/lirc_options.conf``
 
 .. raw:: html
 
@@ -185,17 +123,7 @@ Modify the file as below:
     driver = default
     device = /dev/lirc1
 
-**Step** 7: Run install command again.
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo apt install ./liblirc0_0.10.1-5.2_armhf.deb ./liblircclient0_0.10.1-5.2_armhf.deb ./lirc_0.10.1-5.2_armhf.deb
-
-**Step 8:** Copy the configuration file to/home/pi and /etc/lirc:
+**Step 5:** Copy the configuration file to ``/home/pi`` and ``/etc/lirc``:
 
 .. raw:: html
 
@@ -207,7 +135,7 @@ Modify the file as below:
     cp lircd.conf /home/pi
     sudo cp lircd.conf /etc/lirc/
 
-**Step 9:** Reboot the Raspberry Pi after the change.
+**Step 6:** Reboot the Raspberry Pi after the change.
 
 .. raw:: html
 
@@ -217,7 +145,7 @@ Modify the file as below:
 
     sudo reboot
 
-**Step 10:** Test the IR receiver.
+**Step 7:** Test the IR receiver.
 
 Check if lirc module is loaded:
 
@@ -235,7 +163,7 @@ You should see this:
 
     /dev/lirc0 /dev/lirc1
 
-**Step 11:** Run the command to start outputting raw data from the IR
+**Step 8:** Run the command to start outputting raw data from the IR
 receiver:
 
 .. raw:: html
@@ -253,29 +181,17 @@ printed on the screen.
 
     pi@raspberrypi:~ $ irw
     0000000000000001 00 KEY_CHANNELDOWN ./lircd.conf
-
     0000000000000003 00 KEY_CHANNELUP ./lircd.conf
-
     0000000000000002 00 KEY_CHANNEL ./lircd.conf
-
     0000000000000004 00 KEY_PREVIOUS ./lircd.conf
-
     0000000000000005 00 KEY_NEXT ./lircd.conf
-
     0000000000000006 00 KEY_PLAYPAUSE ./lircd.conf
-
     0000000000000008 00 KEY_VOLUMEDOWN ./lircd.conf
-
     0000000000000007 00 KEY_VOLUMEUP ./lircd.conf
-
     0000000000000009 00 KEY_EQUAL ./lircd.conf
-
     0000000000000015 00 BTN_1 ./lircd.conf
-
     0000000000000014 00 BTN_0 ./lircd.conf
-
     000000000000000a 00 KEY_NUMERIC_0 ./lircd.conf
-
     000000000000000b 00 KEY_NUMERIC_1 ./lircd.conf
 
 If it does not appear, somewhere may be incorrectly configured. Check
@@ -283,7 +199,7 @@ again that you’ve connected everything and haven’t crossed any wires.
 
 **For C Users:**
 
-**Step 5:** Download LIRC client library:
+**Step 9:** Download LIRC client library:
 
 .. raw:: html
 
@@ -293,7 +209,7 @@ again that you’ve connected everything and haven’t crossed any wires.
 
     sudo apt-get install liblircclient-dev
 
-**Step 6:** Change directory.
+**Step 10:** Change directory.
 
 .. raw:: html
 
@@ -303,7 +219,7 @@ again that you’ve connected everything and haven’t crossed any wires.
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/23_ircontrol/
 
-**Step 7:** Copy the *lircrc* file to */etc/lirc/lirc/*:
+**Step 11:** Copy the ``lircrc`` file to ``/etc/lirc/lirc/``:
 
 .. raw:: html
 
@@ -313,7 +229,7 @@ again that you’ve connected everything and haven’t crossed any wires.
 
     sudo cp lircrc /etc/lirc/
 
-**Step 8:** Compile.
+**Step 12:** Compile.
 
 .. raw:: html
 
@@ -323,7 +239,11 @@ again that you’ve connected everything and haven’t crossed any wires.
 
     gcc ircontrol.c -lwiringPi -llirc_client
 
-**Step 9:** Run.
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
+**Step 13:** Run.
 
 .. raw:: html
 
@@ -332,10 +252,6 @@ again that you’ve connected everything and haven’t crossed any wires.
 .. code-block::
 
     sudo ./a.out
-
-.. note::
-
-   If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
 
 **Code**
 
@@ -459,13 +375,7 @@ again that you’ve connected everything and haven’t crossed any wires.
 
 **For Python Users:**
 
-**Step 5:** Download and install pylirc:
-
-Pylirc is LIRC Python wrapper and it's required to access LIRC from
-Python programs. To install Pylirc you should complete the following
-steps.
-
-Install Pylirc dependencies:
+**Step 9:** Install ``lirc`` Python packages:
 
 .. raw:: html
 
@@ -473,44 +383,9 @@ Install Pylirc dependencies:
 
 .. code-block::
 
-    sudo apt-get install python3-dev
-    sudo apt-get install liblircclient-dev
+    sudo pip3 install lirc
 
-Install Pylirc:
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    wget https://files.pythonhosted.org/packages/a9/e1/a19ed9cac5353ec07294be7b1aefc8f89985987b356e916e2c39b5b03d9a/pylirc2-0.1.tar.gz
-    tar xvf pylirc2-0.1.tar.gz
-    cd pylirc2-0.1
-
-**Step 6:** Replace file pylircmodule.c:
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    rm pylircmodule.c
-    wget https://raw.githubusercontent.com/project-owner/Peppy.doc/master/files/pylircmodule.c
-
-**Step 7:** Install Pylirc (assuming that Python 3.7 is in use):
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo python3 setup.py install
-    sudo mv /usr/local/lib/python3.7/dist-packages/pylircmodule.cpython-37m-arm-linux-gnueabihf.so /usr/local/lib/python3.7/dist-packages/pylirc.cpython-37m-arm-linux-gnueabihf.so
-
-**Step 8:** Change directory:
+**Step 10:** Change directory:
 
 .. raw:: html
 
@@ -520,7 +395,7 @@ Install Pylirc:
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
-**Step 9:** Run.
+**Step 11:** Run.
 
 .. raw:: html
 
@@ -538,24 +413,34 @@ Install Pylirc:
 
 .. code-block:: python
 
-    #!/usr/bin/python3
-    import pylirc
+    import lirc
     import time
     import RPi.GPIO as GPIO
 
+    # client = lirc.Client()
+    # print(client.version())
+
+    ''' RGB config'''
     Rpin = 17
     Gpin = 18
     Bpin = 27
-    blocking = 0
 
     Lv = [0, 20, 90] # Light Level
     color = [0, 0, 0]
+
+    p_R = None
+    p_G = None
+    p_B = None
+
 
     def setColor(color):
         # global p_R, p_G, p_B
         p_R.ChangeDutyCycle(100 - color[0])     # Change duty cycle
         p_G.ChangeDutyCycle(100 - color[1])
         p_B.ChangeDutyCycle(100 - color[2])
+
+    def x():
+        setColor(color)
 
     def setup():
         global p_R, p_G, p_B
@@ -571,65 +456,64 @@ Install Pylirc:
         p_R.start(100)
         p_G.start(100)
         p_B.start(100)
-        err = pylirc.init("ircontrol", "./lircrc", blocking)
-        print(err)
-        if (err == 0):
-            raise IOError("IR init error!")
 
     def map(x, in_min, in_max, out_min, out_max):
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-    def RGB(config):
+    def key_handler(key:str):
         global color
-        if config == 'KEY_CHANNELDOWN':
+
+        if key == 'KEY_CHANNELDOWN':
             color[0] = Lv[0]
             print ('Red OFF')
 
-        if config == 'KEY_CHANNEL':
+        elif key == 'KEY_CHANNEL':
             color[0] = Lv[1]
-            print ('Light Red')
+            print ('Dark Red')
 
-        if config == 'KEY_CHANNELUP':
+        elif key == 'KEY_CHANNELUP':
             color[0] = Lv[2]
-            print ('Red')
+            print ('Bright Red')
 
-        if config == 'KEY_PREVIOUS':
+        elif key == 'KEY_PREVIOUS':
             color[1] = Lv[0]
             print ('Green OFF')
 
-        if config == 'KEY_NEXT':
+        elif key == 'KEY_NEXT':
             color[1] = Lv[1]
-            print ('Light Green')
+            print ('Dark Green')
 
-        if config == 'KEY_PLAYPAUSE':
+        elif key == 'KEY_PLAYPAUSE':
             color[1] = Lv[2]
-            print ('Green')
+            print ('Bright Green')
 
-        if config == 'KEY_VOLUMEDOWN':
+        elif key == 'KEY_VOLUMEDOWN':
             color[2] = Lv[0]
             print ('Blue OFF')
 
-        if config == 'KEY_VOLUMEUP':
+        elif key == 'KEY_VOLUMEUP':
             color[2] = Lv[1]
-            print ('Light Blue')
+            print ('Dark Blue')
 
-        if config == 'KEY_EQUAL':
+        elif key == 'KEY_EQUAL':
             color[2] = Lv[2]
-            print ('BLUE')
+            print ('Bright BLUE')
 
+        setColor(color)
+
+        
     def loop():
-        while True:
-            s = pylirc.nextcode(1)
-            # print(s)
-            while(s):
-                for (code) in s:
-                    print ("Command: ", code["config"]) 
-                    RGB(code["config"])
-                    setColor(color)
-                if(not blocking):
-                    s = pylirc.nextcode(1)
-                else:
-                    s = []
+        with lirc.LircdConnection(timeout=5.0) as conn:
+            conn.connect()
+            while True:
+                try: 
+                    # print(conn.readline()) # 0000000000000001 00 KEY_CHANNELDOWN ./lircd.conf
+                    key = conn.readline().split(' ')[2] #KEY_CHANNELDOWN
+                    # print(key)
+                    key_handler(key)
+                except TimeoutError:
+                    # print('Timeout')
+                    pass 
 
     def destroy():
         p_R.stop()
@@ -639,14 +523,16 @@ Install Pylirc:
         GPIO.output(Gpin, GPIO.HIGH)
         GPIO.output(Bpin, GPIO.HIGH)
         GPIO.cleanup()
-        pylirc.exit()
 
-    if __name__ == '__main__':
+
+    if __name__ == "__main__":
         try:
             setup()
             loop()
         except KeyboardInterrupt:
             destroy()
+            
+
 
 Each of the top three rows of buttons on the remote control represents a
 kind of color, i.e. red, green, and blue, top to bottom. Each column

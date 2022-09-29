@@ -94,6 +94,10 @@ left or right as long as you know the state of output 2.
 
     gcc rotary_encoder.c -lwiringPi
 
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
 **Step 4:** Run.
 
 .. raw:: html
@@ -103,10 +107,6 @@ left or right as long as you know the state of output 2.
 .. code-block::
 
     sudo ./a.out
-
-.. note::
-
-   If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
 
 **Code**
 

@@ -58,6 +58,8 @@ If you want to quit python CLI, type in:
 .. image:: media/image91.png
     :align: center
 
+.. _install_wiringpi:
+
 WiringPi 
 ------------
 

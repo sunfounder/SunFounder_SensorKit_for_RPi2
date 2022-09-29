@@ -14,6 +14,7 @@ and go into the next chapter.
    :maxdepth: 2
 
    what_we_need
+   install_the_os
    set_up_your_raspberry_pi
 
 

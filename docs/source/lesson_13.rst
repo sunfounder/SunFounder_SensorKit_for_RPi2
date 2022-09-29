@@ -135,6 +135,10 @@ step.)
 
     gcc pcf8591.c -lwiringPi
 
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
 **Step 5:** Run.
 
 .. raw:: html
@@ -144,10 +148,6 @@ step.)
 .. code-block::
 
     sudo ./a.out
-
-.. note::
-
-   If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
 
 **Code**
 
@@ -196,6 +196,11 @@ step.)
 .. code-block::
 
     sudo python3 13_pcf8591.py
+
+.. note::
+  * If you get the error ``FileNotFoundError: [Errno 2] No such file or directory: '/dev/i2c-1'``, you need to setup I2C (see :ref:`i2c_config`).
+  * If you get ``ModuleNotFoundError: No module named 'smbus2'`` error, please run the command: ``sudo pip3 install smbus2``.
+  * If the error ``OSError: [Errno 121] Remote I/O`` appears, it means the module is miswired or the module is broken.
 
 **Code**
 

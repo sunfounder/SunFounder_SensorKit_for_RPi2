@@ -74,6 +74,10 @@ this step.)
 
     gcc i2c_lcd1602.c -lwiringPi
 
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
 **Step 5:** Run.
 
 .. raw:: html
@@ -86,7 +90,7 @@ this step.)
 
 .. note::
 
-   If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
+    * You can try screwing the potentiometer on the back if the code and wiring are fine, but the LCD still does not show the content.
 
 **Code**
 
@@ -213,6 +217,14 @@ this step.)
 .. code-block::
 
     sudo python3 30_i2c_lcd1602.py
+
+.. note::
+
+    * If you get the error ``FileNotFoundError: [Errno 2] No such file or directory: '/dev/i2c-1'``, you need to setup I2C (see Appendix -> I2C Configuration).
+    * If you get ``ModuleNotFoundError: No module named 'smbus2'`` error, please run the command: ``sudo pip3 install smbus2``.
+    * If the error ``OSError: [Errno 121] Remote I/O`` appears, it means the module is miswired or the module is broken.
+    * If the module is connected correctly and still has the error ``TimeoutError: [Errno 110] Connection timed out``, it means that the module is broken, please contact service@sunfounder.com. It is also possible to test if the I2C address appears with the command ``i2cdetect -y 1`` if you have the I2C tools installed (``sudo apt-get install i2c-tools``).
+
 
 **Code**
 

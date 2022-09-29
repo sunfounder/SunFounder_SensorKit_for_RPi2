@@ -87,6 +87,10 @@ step.)
 
     gcc barometer.c bmp180.c -lm -lwiringPi -lwiringPiDev
 
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
 **Step 6:** Run.
 
 .. raw:: html
@@ -99,7 +103,7 @@ step.)
 
 .. note::
 
-   If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
+    * If you get the error ``“Unable to open I2C device: No such file or directory”``, you need to setup I2C (see :ref:`i2c_config`).
 
 **Code**
 
@@ -130,17 +134,7 @@ step.)
 
 **For Python Users:**
 
-**Step 3:** Install smbus2 for I2C.
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo pip3 install smbus2
-
-**Step 4:** We'll need to install some utilities for the Raspberry Pi to
+**Step 3:** We'll need to install some utilities for the Raspberry Pi to
 communicate over I2C.
 
 .. raw:: html
@@ -153,7 +147,7 @@ communicate over I2C.
     cd Adafruit_Python_BMP
     sudo python3 setup.py install
 
-**Step 5:** Change directory.
+**Step 4:** Change directory.
 
 .. raw:: html
 
@@ -163,7 +157,7 @@ communicate over I2C.
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
 
-**Step 6:** Run.
+**Step 5:** Run.
 
 .. raw:: html
 
@@ -172,6 +166,12 @@ communicate over I2C.
 .. code-block::
 
     sudo python3 31_barometer.py
+
+.. note::
+
+    * If you get the error ``FileNotFoundError: [Errno 2] No such file or directory: '/dev/i2c-1'``, you need to setup I2C (see Appendix -> I2C Configuration).
+    * If the error ``OSError: [Errno 121] Remote I/O`` appears, it means the module is miswired or the module is broken.
+    * If the module is connected correctly and still has the error ``TimeoutError: [Errno 110] Connection timed out``, it means that the module is broken, please contact service@sunfounder.com. It is also possible to test if the I2C address appears with the command ``i2cdetect -y 1`` if you have the I2C tools installed (``sudo apt-get install i2c-tools``).
 
 **Code**
 

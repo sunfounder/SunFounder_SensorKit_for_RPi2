@@ -165,6 +165,15 @@ current temperature is 26187/1000=26.187 ℃.
 .. code-block::
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/C/26_ds18b20/
+
+Open the ``ds18b20.c`` to change the sensor address.
+
+.. raw:: html
+
+    <run></run>
+
+.. code-block::
+
     nano ds18b20.c
 
 Find the following line, replace \"28-00000495db35\" with your
@@ -172,7 +181,7 @@ sensor address. Save and exit.
 
 .. code-block::
 
-    char* addr = "/sys/bus/w1/devices/28-00000495db35/w1_slave";
+    fd = open("/sys/bus/w1/devices/28-031590bf4aff/w1_slave", O_RDONLY);
 
 **Step 6:** Compile.
 
@@ -184,6 +193,10 @@ sensor address. Save and exit.
 
     gcc ds18b20.c -lwiringPi
 
+.. note::
+
+    If it does not work after running, or there is an error prompt ``wiringPi.h: No such file or directory``, please refer to :ref:`install_wiringpi` to install it.
+
 **Step 7:** Run.
 
 .. raw:: html
@@ -193,10 +206,6 @@ sensor address. Save and exit.
 .. code-block::
 
     sudo ./a.out
-
-.. note::
-
-   If it does not work after running, or there is an error prompt: \"wiringPi.h: No such file or directory\", please refer to :ref:`C code is not working?`.
 
 **Code**
 
@@ -289,6 +298,19 @@ sensor address. Save and exit.
 
     cd /home/pi/SunFounder_SensorKit_for_RPi2/Python/
     nano 26_ds18b20.py
+
+
+Find the following code, replace ``28-031590bf4aff`` with your sensor address. 
+
+.. code-block::
+
+    def setup():
+        global ds18b20
+        for i in os.listdir('/sys/bus/w1/devices'):
+            if i != 'w1_bus_master1':
+                ds18b20 = '28-031590bf4aff'
+
+Press Ctrl + X -> Y -> Enter to save and exit.
 
 **Step 6:** Run.
 
