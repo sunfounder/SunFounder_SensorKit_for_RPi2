@@ -11,7 +11,7 @@ Quick Links:
 
 <a id="about_this_kit"></a>
 ### About SunFounder Sensor Kit V2.0:
-This is a kit with whole bunch of sensors and activaters, provided by SunFounder. The code here contains C and Python and are both for Raspberry Pi. If any error or BUGs, wellcom to post issus in Github, or [Email](#contact_us) us.
+This is a kit with whole bunch of sensors and activaters, provided by SunFounder. The code here contains C and Python and are both for Raspberry Pi. If any error or BUGs occur, you are welcome to post issus in Github, or [Email](#contact_us) us.
 
 <a id="update"></a>
 ### Update:
