@@ -4,6 +4,7 @@ What We Need?
 Required Components
 -----------------------
 
+
 **Raspberry Pi**
 
 The Raspberry Pi is a low cost, credit-card sized computer that plugs
@@ -12,13 +13,15 @@ It is a capable little device that enables people of all ages to explore
 computing, and to learn how to program in languages like Scratch and
 Python.
 
-Our kit applies to the following versions of the product of Raspberry Pi
-:
+Our kit applies to the following versions of the product of Raspberry Pi:
 
 .. image:: media/image52.jpeg
    :alt: RPi2
    :width: 5.38889in
    :height: 4.57431in
+
+.. note:: This kit currently does not fully support Raspberry Pi 5, and some examples may not be available.
+
 
 **Power Adapter**
 

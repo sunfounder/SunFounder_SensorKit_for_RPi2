@@ -69,7 +69,8 @@ is as shown below:
     sudo apt-get update
     sudo apt-get upgrade
 
-**Step 3:** You can edit that file with nano.
+**Step 3:** Enable 1-Wire.
+
 
 .. raw:: html
 
@@ -77,27 +78,10 @@ is as shown below:
 
 .. code-block::
 
-    sudo nano /boot/config.txt
+    sudo raspi-config 
 
-Then scroll to the bottom and type.
 
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    dtoverlay = w1-gpio
-
-Then reboot with
-
-.. raw:: html
-
-    <run></run>
-
-.. code-block::
-
-    sudo reboot
+Then, select **3 Interface Options** -> **I7 1-Wire** -> **<Yes>**. After finish config, the Raspberry Pi will restart.
 
 Mount the device drivers and confirm whether the device is effective or
 not.

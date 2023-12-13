@@ -34,7 +34,9 @@ Insert your SD card into the computer or laptop SD card slot.
 
 In the Raspberry Pi Imager, select the OS that you want to install and the SD card you would like to install it on.
 
-    .. image:: media/install_os3.png
+.. note:: For the best experience, we recommend you use bullseye version,
+
+    .. image:: media/sp231213_141406.png
         :align: center
 
 .. note::
