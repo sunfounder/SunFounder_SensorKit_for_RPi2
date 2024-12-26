@@ -17,18 +17,28 @@
 
 # -- Project information -----------------------------------------------------
 import sphinx_rtd_theme
+import time
 
 project = 'SunFounder SunFounder_SensorKit_for_RPi2'
-copyright = '2021, SunFounder'
+copyright = f'{time.localtime().tm_year}, SunFounder'
 author = 'www.sunfounder.com'
 
+# -- sphinx_rtd_theme Theme options -----------------------------------------------------
+html_theme_options = {
+    'flyout_display': 'attached',
+    'version_selector': False,
+    'language_selector': False,
+}
 
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autosectionlabel'
+extensions = [
+    'sphinx.ext.autosectionlabel',
+    'sphinx_copybutton',
+    'sphinx_rtd_theme'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
